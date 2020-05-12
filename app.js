@@ -7,31 +7,17 @@ App({
   login(cb){
     wx.login({
       success(res) {
-        console.log(res)
         com.post('wx/user/login', { js_code: res.code }, function (res) {
           if (res.code == 1) {
             wx.setStorageSync("user", res.data)
             wx.setStorageSync("token", res.token)
             cb(res)
+          }else{
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
           }
         })
-      }
-    })
-  },
-  //获取默认地址
-  getMoren(id){
-    if(id){
-      com.post('user/address/get/id', { id: id }, function (res) {
-        if (res.code == 1) {
-          wx.setStorageSync("address", res.data)
-        }
-      })
-    }
-  },
-  getRes(id){
-    com.post('wx/user/get/info/wxid', { wx_id: id }, function (res) {
-      if (res.code == 1) {
-        wx.setStorageSync("res", res.data)
       }
     })
   },

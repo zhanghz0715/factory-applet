@@ -1,5 +1,5 @@
 const util = {
-  API: 'https://api.hbhzdtn.com/api/', 
+  API: 'http://192.168.1.101:8085/factory/', 
   webSrc: 'https://api.hbhzdtn.com/dist/#/dayin_wx',
 
   /**
