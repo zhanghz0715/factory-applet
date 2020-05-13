@@ -1,5 +1,3 @@
-<view class='pa-l30 pa-r30 fo-28 fo-g text-center'>*该服务由平台承包*</view>
-
 <view class='pa-30'>
 
   <view class='bz'>
@@ -10,34 +8,24 @@
     </view>
     <form bindsubmit="formSubmit" report-submit="true">
       <view class='panel ra-10 '>
-        <view class=' pa-b30 border-b'>
-          <view class='fo-30'>快递类型</view>
-          <view class='panel-around'>
-            <view wx:for="{{kdtype}}" class='{{index == flag ? "fgh2":"fgh"}}' data-index='{{index}}' bindtap='change'>{{item.la}}</view>
-          </view>
-        </view>
-        <!-- <view class='pa-t30 panel-between item-center border-b pa-b20'>
-          <view class='fo-30'>收件地址</view>
-          <input class='fo-30 text-right' name="mu" placeholder='输入详细地址(必填)'></input>
-        </view> -->
-        <view class='pa-t30 pa-b30 panel-between item-center border-b' data-path='/pages/mine/address/address?choose=1' bindtap='navTo'>
-          <view class='fo-30'>收件地址</view>
-          <view class='panel-end item-center'>
-            <view class='fo-30 fo-g'>{{address ? address:'请选择地址'}}</view>
-            <image src='/img/right.png' class='icon-30 ma-l20'></image>
-          </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>名称</view>
+          <input class='fo-30 text-right' name="name" placeholder='输入产品名称(必填)'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
-          <view class='fo-30'>备注信息</view>
-          <input class='fo-30 text-right' name="des" placeholder='备注信息(选填)'></input>
+          <view class='fo-30'>描述</view>
+          <input class='fo-30 text-right' name="name" placeholder='输入产品描述(选填)'></input>
         </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>长度</view>
+          <input class='fo-30 text-right' name="length" placeholder='输入产品长度(必填)'></input>
+          </view>
+           <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>理论支重</view>
+          <input class='fo-30 text-right' name="weight" placeholder='输入理论支重(必填)'></input>
+          </view>
       </view>
-      <view class='fo-26 text-center fo-g'>{{msg.des}}</view>
-      <view class='fo-26 text-center ma-t30 '>需支付</view>
-      <view class='text-center fo-40 bold ma-t20 fo-m'>{{kdtype[flag].price}}
-        <text class='fo-26'>元</text>
-      </view>
-      <button class='btns ' form-type="submit">立即发布帮助</button>
+      <button class='btns ' form-type="submit">添加产品类型</button>
     </form>
 
   </view>

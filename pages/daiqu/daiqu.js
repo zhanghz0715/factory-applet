@@ -6,37 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    kdtype: [{ la: '小件', price: 1 }, { la: '中件', price: 2 }, { la: '大件', price: 3 }],
-    flag:0,
-    address:''
-  },
-  navTo(e) {
-    app.com.navTo(e)
-  },
-  change(e){
-    this.setData({
-      flag: e.currentTarget.dataset.index
-    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     _this = this
-    let p = wx.getStorageSync("server")[options.index].price_gui.split(',')
-    this.data.kdtype[0].price = p[0]
-    this.data.kdtype[1].price = p[1]
-    this.data.kdtype[2].price = p[2]
-    this.setData({
-      msg: wx.getStorageSync("server")[options.index],
-      kdtype:this.data.kdtype
-    })
-    if(wx.getStorageSync("address")){
-      let add = wx.getStorageSync("address")
-      this.setData({
-        address: add.address + '-'+add.detail
-      })
-    }
+   
   },
   formSubmit(e){
     let formId = e.detail.formId

@@ -1,1 +1,51 @@
-<web-view src="{{url}}"></web-view>
+<view class='pa-30'>
+  <view>
+    <form bindsubmit="formSubmit" report-submit="true">
+      <view class='panel ra-10 '>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>柜号</view>
+          <input class='fo-30 text-right' name="cabinetNumber" placeholder='输入柜号(必填)'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>产品型号</view>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <input class='fo-30 text-right' name="type" placeholder='请选择产品型号(必填)'></input>
+          </picker>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>模号</view>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <input class='fo-30 text-right' name="mould" placeholder='请选择模号(必填)'></input>
+          </picker>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>长度</view>
+          <input class='fo-30 text-right' name="length" placeholder='输入长度(必填)'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>理论支重</view>
+          <input class='fo-30 text-right' name="weight" placeholder='输入理论支重(必填)'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>平均支重</view>
+          <input class='fo-30 text-right' name="weight" placeholder='输入平均支重(必填)'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>支重</view>
+          <input class='fo-30 text-right' name="weight" placeholder='输入支重(必填)'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>支数</view>
+          <input class='fo-30 text-right' name="count" placeholder='输入支数(必填)'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>重量</view>
+          <input class='fo-30 text-right' name="count" placeholder='输入重量(必填)'></input>
+        </view>
+      </view>
+      <button class='btns ' form-type="submit">添加排产</button>
+    </form>
+
+  </view>
+
+</view>

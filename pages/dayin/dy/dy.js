@@ -6,17 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url:''
+    array: ['美国', '中国', '巴西', '日本'],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    _this = this
-    _this.setData({
-      url: app.com.webSrc+'?wx_id='+wx.getStorageSync("user").id
-    })
+   
   },
 
 })

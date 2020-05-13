@@ -11,7 +11,14 @@ Page({
     page:0,
     cai:false,
     total_fee:0,
-    address:''
+    address:'',
+    date: app.com.getNowDate(),
+    list: [{
+      id: 'view',
+      name: '视图容器',
+      open: false,
+      pages: ['view', 'scroll-view', 'swiper', 'movable-view', 'cover-view']
+    }]
   },
   
   navTo(e) {
@@ -21,18 +28,38 @@ Page({
     wx.navigateTo({
       url: '/pages/dayin/dy/dy',
     })
-    // wx.chooseMessageFile({
-    //   count: 1,
-    //   type: 'all',
-    //   success(res) {
-    //     const tempFilePaths = res.tempFilePaths
-    //     console.log(res)
-    //   }
-    // })
   },
   pageInput(e){
     this.data.page = e.detail.value
     this.init()
+  },
+  bindDateChange(e){
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  /**
+   * 收缩核心代码
+   */
+  kindToggle(e) {
+    const id = e.currentTarget.id
+    const list = this.data.list
+    for (let i = 0, len = list.length; i < len; ++i) {
+      if (list[i].id === id) {
+        list[i].open = !list[i].open
+      } else {
+        list[i].open = false
+      }
+    }
+
+    /**
+     * key和value名称一样时，可以省略
+     * 
+     * list:list=>list
+     */
+    this.setData({
+      list
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -55,10 +82,10 @@ Page({
     this.getFile()
   },
   getFile(){
-    wx.showLoading({
-      title: '请稍等',
-      task:true
-    })
+    // wx.showLoading({
+    //   title: '请稍等',
+    //   task:true
+    // })
     app.com.post('file/get',{
       sorts:'create_time desc',
       pageIndex:1,

@@ -13,8 +13,8 @@
 		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
-	"appid": "wx567fa001acf0624b",
+	"libVersion": "2.0.4",
+	"appid": "wxeff6d2909bcea943",
 	"projectname": "factory",
 	"debugOptions": {
 		"hidedInDevtools": []

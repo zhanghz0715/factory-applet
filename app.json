@@ -1,7 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/dayin/dayin",
+    "pages/richtext/richtext",
     "pages/order/order",
+    "pages/daiqu/daiqu",
+    "pages/index/index",
+    
     "pages/mine/mine",
     "pages/mine/info/info",
     "pages/mine/address/address",
@@ -9,8 +13,7 @@
     "pages/login/login",
     "pages/payment/payment",
     "pages/other/other",
-    "pages/daiqu/daiqu",
-    "pages/dayin/dayin",
+    
     "pages/dayin/dy/dy",
     "pages/banzu/banzu",
     "pages/order/detail/detail",
@@ -19,8 +22,8 @@
     "pages/mine/chooseaddress/chooseaddress",
     "pages/mine/cash/cash",
     "pages/mine/jdsm/jdsm",
-    "pages/mine/about/about",
-    "pages/richtext/richtext"
+    "pages/mine/about/about"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -252,6 +252,28 @@ const util = {
     }
     return timeSpanStr;
   },
+  getNowDate(){
+    //获取当前时间戳
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp / 1000;
+
+    //获取当前时间
+    var n = timestamp * 1000;
+    var date = new Date(n);
+    //年
+    var Y = date.getFullYear();
+    //月
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //日
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    //时
+    var h = date.getHours();
+    //分
+    var m = date.getMinutes();
+    //秒
+    var s = date.getSeconds();
+    return Y+"-"+M+"-"+D;
+  },
   cancel(oid, name, cb) {
     this.post('help/update/state', {
       state: 4,
