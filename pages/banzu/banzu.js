@@ -10,12 +10,12 @@ Page({
     page:1,
     load:false,
     size:10,
-    tag:['校园帮','我发出的','我帮助的'],
+    tag:['我的排产','我的产品','我的模具'],
     flag:0,
-    url:'get',
+    url:'/product/page',
     wheres:"",
-    sorts:"",
-    fields:'',
+    productDate:"",
+    typeId:"",
     wx_id:wx.getStorageSync("user").id
   },
   getWxsmData(){
@@ -166,11 +166,10 @@ Page({
       flag: e.currentTarget.dataset.index
     })
     if(index == 0){
-      _this.data.url = 'get'
-      _this.data.wheres = 'a_id=' + wx.getStorageSync("area").pk_id
-      _this.data.sorts = ""
-      _this.data.fields = ''
-      _this.getList(0)
+      _this.data.url = 'product/page'
+      _this.data.productDate = ""
+      _this.data.typeId = ''
+      _this.getList(0) 
     }else if(index == 1){
       _this.data.url = 'get2'
       _this.data.fields = 'helplist.*,wxuser.phone,wxuser.dphone,wxuser.avatar_url,wxuser.nick_name'
@@ -206,19 +205,19 @@ Page({
     this.setData({
       load:true
     })
-    app.com.post('help/'+this.data.url, {
-      a_id:wx.getStorageSync("area").pk_id,
-      wheres:this.data.wheres,
-      sorts:this.data.sorts,
-      fields:this.data.fields,
-      pageIndex: this.data.page,
-      pageSize: this.data.size
-    }, function (res) {
+    app.com.post(this.data.url, {
+      current: this.data.page,
+      size: this.data.size,
+      productDate:this.data.productDate,
+      typeId:this.data.typeId
+}, function (res) {
       wx.stopPullDownRefresh()
+      console.log(res)
       if (res.code == 1) {
-        let re = res.data.list
+        let re = res.data.records
         for (let i in re) {
-          re[i].time = app.com.formatMsgTime(re[i].create_time)
+          re[i].createTime = app.com.js_date_time(re[i].createTime)
+          re[i].productDate = app.com.js_date_time(re[i].productDate)
         }
         let arr = []
         if (type == 0) {
@@ -286,7 +285,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title:'互帮互助代替你',
+      title:'杰兴铝材排产仓管系统',
       path:'/pages/index/index'
     }
   }

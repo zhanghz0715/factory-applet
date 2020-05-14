@@ -1,5 +1,5 @@
 const util = {
-  API: 'http://192.168.1.101:8085/factory/', 
+  API: 'http://192.168.1.101:8085/factory/',
   webSrc: 'https://api.hbhzdtn.com/dist/#/dayin_wx',
 
   /**
@@ -9,7 +9,7 @@ const util = {
     let pages = getCurrentPages(); // 当前页面
     // let beforePage = pages[pages.length - 2]; 
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           model: res.model,
           width: res.windowWidth,
@@ -20,17 +20,19 @@ const util = {
       },
     })
   },
-  login(cb){
+  login(cb) {
     var that = this;
     wx.login({
       success(res) {
-        that.post('wx/user/login', { js_code: res.code }, function (res) {
-          if(res.code == -1){
+        that.post('wx/user/login', {
+          js_code: res.code
+        }, function(res) {
+          if (res.code == -1) {
             wx.showToast({
               title: res.data.msg + '',
               icon: 'none'
             })
-          }else if (res.code == 1) {
+          } else if (res.code == 1) {
             wx.setStorageSync("user", res.data)
             wx.setStorageSync("token", res.token)
             cb(res)
@@ -51,10 +53,10 @@ const util = {
     //通用post接口实现方法
     var that = this;
     let _data = data || {};
-    let _success = success || function (e) {
+    let _success = success || function(e) {
       console.log(e)
     };
-    let _fail = fail || function (e) {
+    let _fail = fail || function(e) {
       console.log(e)
     };
     let _method = method || 'POST';
@@ -78,20 +80,20 @@ const util = {
       method: _method,
       header: _header,
       data: _data,
-      success: function (res) {
+      success: function(res) {
         if (typeof _success == 'function' && res.statusCode != 404 && res.statusCode != 500 && res.statusCode != 400) {
           _success(res.data);
-          if (res.data.code == -1){
-            that.login(function (res) {
+          if (res.data.code == -1) {
+            that.login(function(res) {
               that.http(method, url, data, success, fail)
             })
-          } else if(res.data.code != 1){
+          } else if (res.data.code != 1) {
             wx.showToast({
               title: res.data.msg + '',
               icon: 'none'
             })
           }
-         
+
           // if (res.data.code != 101 && res.data.code != -1){
           //   if (res.data.code != 1) {
           //     wx.showToast({
@@ -105,7 +107,7 @@ const util = {
           //     that.http(method, url, data, success, fail)
           //   })
           // }
-          
+
         } else {
           if (typeof _success != 'function') {}
           wx.showToast({
@@ -114,7 +116,7 @@ const util = {
           })
         }
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(`======== 接口  请求失败 ========`);
         if (typeof _fail == 'function') {
           _fail(res);
@@ -122,7 +124,7 @@ const util = {
       }
     });
   },
-  dateFormat(time, fmt) { //author: meizz 
+  dateFormat(time, fmt) { //author: zhagnghz 
     let date = new Date(parseInt(time))
     var o = {
       "M+": date.getMonth() + 1, //月份 
@@ -185,7 +187,7 @@ const util = {
           state: 1,
           is_pay: 1,
           id: msg.oid
-        }, function (res) {
+        }, function(res) {
           if (res.code == 1) {
             if (cb) {
               cb(true)
@@ -252,11 +254,10 @@ const util = {
     }
     return timeSpanStr;
   },
-  getNowDate(){
+  getNowDate() {
     //获取当前时间戳
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
-
     //获取当前时间
     var n = timestamp * 1000;
     var date = new Date(n);
@@ -272,13 +273,31 @@ const util = {
     var m = date.getMinutes();
     //秒
     var s = date.getSeconds();
-    return Y+"-"+M+"-"+D;
+    return Y + "-" + M + "-" + D;
+  },
+  //时间戳转换成日期时间
+  js_date_time(unixtime) {
+    var date = new Date(unixtime);
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    h = h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    second = second < 10 ? ('0' + second) : second;
+    // return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;//年月日时分秒
+    return y + '-' + m + '-' + d;
+
   },
   cancel(oid, name, cb) {
     this.post('help/update/state', {
       state: 4,
       id: oid
-    }, function (res) {
+    }, function(res) {
 
       if (res.code == 1) {
         wx.showToast({

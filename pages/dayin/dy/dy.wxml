@@ -8,8 +8,8 @@
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>产品型号</view>
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <input class='fo-30 text-right' name="type" placeholder='请选择产品型号(必填)'></input>
+          <picker bindchange="bindTypeChange" value="{{typeList[typeIndex].id}}" data-selecthx="{{typeList[typeIndex].name}}" range-key="{{'name'}}" range="{{typeList}}">
+            <input class='fo-30 text-right'  name="type" placeholder='请选择产品型号(必填)'></input>
           </picker>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>

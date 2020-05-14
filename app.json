@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/dayin/dy/dy",
+    "pages/index/index",
+    "pages/banzu/banzu",
     "pages/dayin/dayin",
     "pages/richtext/richtext",
     "pages/order/order",
     "pages/daiqu/daiqu",
-    "pages/index/index",
-    
     "pages/mine/mine",
     "pages/mine/info/info",
     "pages/mine/address/address",
@@ -13,9 +14,6 @@
     "pages/login/login",
     "pages/payment/payment",
     "pages/other/other",
-    
-    "pages/dayin/dy/dy",
-    "pages/banzu/banzu",
     "pages/order/detail/detail",
     "pages/register/register",
     "pages/mine/addressinfo/addressinfo",
@@ -43,7 +41,7 @@
       },
       {
         "pagePath": "pages/banzu/banzu",
-        "text": "去帮忙",
+        "text": "日常",
         "iconPath": "img/t7.png",
         "selectedIconPath": "img/t8.png"
       },
