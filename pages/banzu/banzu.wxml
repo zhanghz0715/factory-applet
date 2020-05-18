@@ -1,5 +1,5 @@
 <view class="bbf panel-between">
-  <view wx:for="{{tag}}" class='bbf-item ' data-index='{{index}}' bindtap='changeTag'>
+  <view wx:for="{{tag}}" class='bbf-item ' wx:key="index" data-index='{{index}}' bindtap='changeTag'>
     <view class='fo-28 lh-90 text-center {{index == flag ? "bold fo-t":"fo-g"}}'>{{item}}</view>
     <view class='botn' wx:if="{{index == flag}}"></view>
   </view>
@@ -19,9 +19,25 @@
     <view class='fo-26 fo-g'>本月收益</view>
   </view>
 </view>
-<view class="pa-30">
-  <view class='titem' wx:for="{{list}}">
-    <view data-id='{{item.id}}'  data-path='/pages/order/detail/detail' data-names='id' bindtap='navTo'>
+<view class="panel-between">
+<view class='pa-l30 .pa-r30 pa-t20'>
+  <picker class="query" mode="date" value="{{productDate}}" bindchange="bindDateChange">
+    <view class="fo-30" style="height:60rpx;line-height:60rpx;" name="productDate">{{date}}</view>
+   
+  </picker>
+</view>
+<view class='pa-l30 .pa-r30 pa-t20'>
+  <picker class="query" bindchange="bindTypeChange" value="{{typeIndex}}" data-selecthx="{{typeList[typeIndex].name}}" range-key="{{'name'}}" range="{{typeList}}">
+    <view class="fo-30" style="height:60rpx;line-height:60rpx;" name="type">{{type}}</view>
+
+  </picker>
+</view>
+ <image src="/img/reset.png" class="reset" bindtap="reset"></image>
+</view>
+
+<view class="pa-30" wx:if="{{show}}">
+  <view class='titem' wx:for="{{list}}" wx:key="id">
+    <view data-id='{{item.id}}' data-index="{{index}}" data-path='/pages/dayin/dy/dy?id={{item.id}}' data-names='id' bindtap='navTo'>
       <view class='panel-between'>
         <view class='panel-start item-center'>
           <image src='/img/mt.png' class='avatar' mode='aspectFill'></image>
@@ -35,11 +51,12 @@
         <view class='state ste1'>{{item.typeName}}</view>
       </view>
       <view style='margin-left:75rpx'>
-        <view class='fo-26 ma-t10 fo-t'>长度: {{item.length}} | 支重: {{item.weight}}   | 支数: {{item.count}}</view>
+        <view class='fo-26 ma-t10 fo-t'>长度: {{item.length}} |
+          <text wx:if="{{item.weight}}">支重: {{item.weight}}  |</text> 支数: {{item.count}}</view>
       </view>
     </view>
     <view class='panel-end item-center ma-t10'>
-      <view class='state ste2'>总重{{item.totalWeight}}</view>
+      <view class='state ste2' wx:if="{{item.totalWeight}}">总重{{item.totalWeight}}</view>
     </view>
   </view>
 </view>

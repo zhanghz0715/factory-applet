@@ -181,6 +181,12 @@
 					"name": "申请接单",
 					"pathName": "pages/register/register",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "模具生产",
+					"pathName": "pages/work/work",
+					"query": ""
 				}
 			]
 		}

@@ -15,31 +15,51 @@
           <view class="fo-30 text-right" name="productDate">{{date}}</view>
         </picker>
       </view>
-      <view class=' pa-b20  panel-between item-center border-b' bindtap='chooseFile'>
+      <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='fo-30'>机台</view>
+        <input class='fo-30 text-right' name="machine" placeholder='输入机台'></input>
+      </view>
+      <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='fo-30'>班长</view>
+        <input class='fo-30 text-right' name="monitor" placeholder='输入班长'></input>
+      </view>
+      <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='fo-30'>开机/中断</view>
+        <input class='fo-30 text-right' name="openMachine" placeholder='输入开机/中断'></input>
+      </view>
+      <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='fo-30'>前调</view>
+        <input class='fo-30 text-right' name="topNote" placeholder='输入前调'></input>
+      </view>
+      <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='fo-30'>后调</view>
+        <input class='fo-30 text-right' name="postNote" placeholder='输入后调'></input>
+      </view>
+      <view class=' pa-b20  panel-between item-center border-b' bindtap='addProduct'>
         <view class='fo-30'>添加排产</view>
         <view class='day'>+</view>
       </view>
-      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+      <block wx:for-items="{{list}}" wx:key="id">
         <view class="kind-list-item">
-          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
-            <view class="kind-list-text">{{item.name}}</view>
+          <view class="kind-list-item-hd">
+            <view class="kind-list-text" id="{{item.id}}" bindtap="kindToggle">{{item.name}}</view>
+            <view class="kind-list-text"></view>
+            <image class="kind-list-img" id="{{item.id}}" src='/img/delete.png' bindtap='deleteProduct'></image>
+            <image class="kind-list-img" id="{{item.id}}" src='/img/delete.png' bindtap='editProduct' src='/img/change.png'></image>
           </view>
           <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
             <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
-                <navigator url="pages/{{page}}/{{page}}" class="navigator">
-                  <view class="navigator-text">{{page}}</view>
-                  <!-- icon -->
-                 
-                </navigator>
+              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="index">
+                <view class="navigator">
+                  <view class="navigator-text">{{page.name}}</view>
+                  <view class="">{{page.value}}</view>
+                </view>
               </block>
             </view>
-            </view>
-           <view class="navigator-arrow"></view>
+          </view>
         </view>
       </block>
-
-      <button class='btns ' form-type="submit">添加排产</button>
+      <button class='button' form-type="submit">提交</button>
     </form>
   </view>
 </view>

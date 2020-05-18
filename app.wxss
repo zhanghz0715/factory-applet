@@ -67,3 +67,17 @@
 .btns:active{
   background: linear-gradient(to right top,#6183dd,#6e42d3);
 }
+.button{
+  width: 85%;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 100rpx;
+  background: linear-gradient(to right top,#6183dd,#6e42d3);
+  margin-bottom: 10rpx;
+  margin-right: 100rpx;
+  position: fixed; 
+  bottom: 0;
+}

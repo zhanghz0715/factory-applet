@@ -17,14 +17,14 @@ Page({
     }else{
       let name = e.currentTarget.dataset.name
       let index = e.currentTarget.dataset.index
-      if(index == 0){
+      if(index == 0||index==1){
         if (name == '排产录入') {
           wx.navigateTo({
             url: '/pages/dayin/dayin?index=' + index,
           })
-        } else if (name == '打印服务') {
+        } else if (name == '模具生产') {
           wx.navigateTo({
-            url: '/pages/dayin/dayin?index=' + index,
+            url: '/pages/work/work?index=' + index,
           })
         } else {
           wx.navigateTo({

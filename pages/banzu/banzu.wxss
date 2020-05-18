@@ -138,4 +138,20 @@ page {
   position: relative;
   align-items:center;
 }
+.fixt{
+  padding: 20rpx 40rpx;
+  width: 670rpx;
+}
+.query{
+  background:white;
+  text-align:center;
+  height:60rpx;
+  width:115px;
+}
+.reset{
+  width:28px;
+  height:28px;
+  margin-top:5px;
+  margin-right:10px;
+}
  

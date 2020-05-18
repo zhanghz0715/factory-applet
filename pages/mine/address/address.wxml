@@ -1,5 +1,5 @@
 <view class="pa-30">
-  <view class='panel shadow ra-10 ma-b30' wx:for="{{list}}" wx:key="{{index}}" data-index='{{index}}' bindtap='{{choose == 1 ? "chooseIt":""}}'>
+  <view class='panel shadow ra-10 ma-b30' wx:for="{{list}}" wx:key="index" data-index='{{index}}' bindtap='{{choose == 1 ? "chooseIt":""}}'>
     <view class='fo-30'>{{item.address + '-'+item.detail}}</view>
     <view class='panel-between item-center ma-t20'>
       <view>
