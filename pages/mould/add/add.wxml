@@ -1,0 +1,53 @@
+<view class='pa-30'>
+
+  <view class='bz'>
+    <view style='height:60rpx'>
+      <view class="avatar">
+        <open-data type="userAvatarUrl" mode="aspectFill"></open-data>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" report-submit="true">
+      <view class='panel ra-10 '>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>供应商</view>
+          <input class='fo-30 text-right' confirm-type="next" value="{{supplier}}" name="supplier" placeholder='输入供应商'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>型号</view>
+          <input class='fo-30 text-right' confirm-hold value="{{name}}" name="name" placeholder='输入型号'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>产品</view>
+          <view class='fo-30 text-right' style="color:#808080" name="type" bindtap="chooseType">{{type}}</view>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20' wx:if="{{isUpdate}}">
+          <view class='fo-30'>氧化情况</view>
+          <input class='fo-30 text-right' confirm-hold value="{{oxidation}}" name="oxidation" placeholder='输入氧化情况'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20' wx:if="{{isUpdate}}">
+          <view class='fo-30'>
+            <text class='red'>*</text>状态</view>
+          <radio-group bindchange="radioChange">
+            <radio class='fo-30' style="margin-right:10px;" checked="{{status==1}}" value='1'>正常</radio>
+            <radio class='fo-30' value='2' checked="{{status==2}}">报废</radio>
+          </radio-group>
+        </view>
+        <view class='pa-t30 pa-b10'>
+          <view class='fo-30'>模具照片:</view>
+          <view class='tuu panel-center item-center fo-g fo-50' wx:if="{{!isLocalImg}}" style='background-size:100% 100%; -moz-background-size:100% 100%;background-image:url(data:image/png;base64,{{imageUrl}})' data-name='imageUrl' bindtap='choose'> + </view>
+          <view class='tuu panel-center item-center fo-g fo-50' wx:if="{{isLocalImg}}" style='background-size:100% 100%; -moz-background-size:100% 100%;background-image:url({{imageUrl}})' data-name='imageUrl' bindtap='choose'> + </view>
+        </view>
+      </view>
+      <button class='btns ' form-type="submit">提交</button>
+    </form>
+
+  </view>
+  <!-- <view class='panel-center item-center'>
+    <view class='fo-28 fo-b text-center '>费用参考</view>
+    <view class='fo-28 fo-b text-center ma-l30'>代理商入口</view>
+  </view> -->
+
+</view>

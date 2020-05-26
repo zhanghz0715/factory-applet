@@ -102,7 +102,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    _this = this
+    _this = this;
+    if(options.list!=null){
+      var list = JSON.parse(options.list)
+      _this.setData({
+        list: list,
+      })
+    }
 
   },
   onShow() {

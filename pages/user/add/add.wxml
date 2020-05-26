@@ -1,0 +1,40 @@
+<view class='pa-30'>
+
+  <view class='bz'>
+    <view style='height:60rpx'>
+      <view class="avatar">
+        <open-data type="userAvatarUrl" mode="aspectFill"></open-data>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" report-submit="true">
+      <view class='panel ra-10 '>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>手机号</view>
+          <input class='fo-30 text-right' confirm-type="next" value="{{username}}" name="username" placeholder='输入手机号'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>name</view>
+          <input class='fo-30 text-right' confirm-hold value="{{name}}" name="name" placeholder='输入姓名'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>类型</view>
+          <radio-group bindchange="radioChange">
+            <radio class='fo-30' style="margin-right:10px;" checked="{{type==3}}" value='3'>工人</radio>
+            <radio class='fo-30' value='2'checked="{{type==2}}" >财务</radio>
+          </radio-group>
+        </view>
+
+      </view>
+      <button class='btns ' form-type="submit">提交</button>
+    </form>
+
+  </view>
+  <!-- <view class='panel-center item-center'>
+    <view class='fo-28 fo-b text-center '>费用参考</view>
+    <view class='fo-28 fo-b text-center ma-l30'>代理商入口</view>
+  </view> -->
+
+</view>

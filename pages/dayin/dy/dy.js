@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show:false,//控制支重和重量是否显示
+    show: false, //控制支重和重量是否显示
     list: [],
     typeList: [],
     typeIndex: 0,
@@ -21,12 +21,12 @@ Page({
     cabinetNumber: '',
     length: '',
     count: '',
-    weight:'',
-    totalWeight:'',
-    btnName: '添加排产',//按钮名称
-    content:'',//上个页面带过来的内容
-    id: '',//上个页面带过来的内容的id
-    productId:''
+    weight: '',
+    totalWeight: '',
+    btnName: '添加排产', //按钮名称
+    content: '', //上个页面带过来的内容
+    id: '', //上个页面带过来的内容的id
+    productId: ''
 
   },
 
@@ -49,18 +49,18 @@ Page({
       _this.analyzeData(content)
       _this.setData({
         btnName: '修改排产',
-        content:content,
+        content: content,
         id: content.id,
       })
       wx.setNavigationBarTitle({
         title: '修改排产'
       })
     }
-    if(options.id!=null){
+    if (options.id != null) {
       _this.setData({
         btnName: '修改排产',
         productId: options.id,
-        show:true
+        show: true
       })
       wx.setNavigationBarTitle({
         title: '修改排产'
@@ -69,56 +69,55 @@ Page({
     }
   },
   // 监听输入
-  watchCount: function (event) {
+  watchCount: function(event) {
     _this.setData({
       count: event.detail.value
     })
-    if(_this.data.weight!=""){
+    if (_this.data.weight != "") {
       _this.setData({
         totalWeight: parseFloat(_this.data.weight) * parseInt(event.detail.value)
       })
     }
   },
   // 监听输入
-  watchWeight: function (event) {
+  watchWeight: function(event) {
     var totalWeight = parseInt(parseFloat(event.detail.value) * parseInt(_this.data.count))
     _this.setData({
       weight: event.detail.value,
-      totalWeight: totalWeight 
-    }
-    )
+      totalWeight: totalWeight
+    })
   },
 
   analyzeData(content) {
     var list = content.pages;
     for (let i = 0, len = list.length; i < len; ++i) {
-      if (list[i].name == '柜号') {
+      if (list[i].name == '柜号' && list[i].value != '') {
         _this.setData({
           cabinetNumber: list[i].value
         })
-      } else if (list[i].name == '产品型号') {
+      } else if (list[i].name == '产品型号' && list[i].value != '') {
         _this.setData({
           type: list[i].value,
           typeId: list[i].id,
         })
-      } else if (list[i].name == '模号') {
+      } else if (list[i].name == '模号' && list[i].value != '') {
         _this.setData({
           mould: list[i].value,
           mouldId: list[i].id,
         })
-      } else if (list[i].name == '长度') {
+      } else if (list[i].name == '长度' && list[i].value != '') {
         _this.setData({
           length: list[i].value
         })
-      } else if (list[i].name == '理论支重') {
+      } else if (list[i].name == '理论支重' && list[i].value != '') {
         _this.setData({
           theoryWeight: list[i].value
         })
-      } else if (list[i].name == '平均支重') {
+      } else if (list[i].name == '平均支重' && list[i].value != '') {
         _this.setData({
           averageWeight: list[i].value
         })
-      } else if (list[i].name == '支数') {
+      } else if (list[i].name == '支数' && list[i].value != '') {
         _this.setData({
           count: list[i].value
         })
@@ -126,21 +125,23 @@ Page({
     }
   },
   //获取详情
-  getDetail(id){
-    app.com.post('product/getDetail', {id:id}, function (res) {
+  getDetail(id) {
+    app.com.post('product/getDetail', {
+      id: id
+    }, function(res) {
       if (res.code == 1) {
         _this.setData({
-          cabinetNumber:res.data.cabinetNumber,
+          cabinetNumber: res.data.cabinetNumber,
           type: res.data.typeName,
           typeId: res.data.typeId,
           mould: res.data.mouldName,
           mouldId: res.data.mouldId,
           length: res.data.length,
           theoryWeight: res.data.theoryWeight,
-          averageWeight:res.data.averageWeight,
+          averageWeight: res.data.averageWeight,
           count: res.data.count,
-          weight:res.data.weight,
-          totalWeight:res.data.totalWeight,
+          weight: res.data.weight,
+          totalWeight: res.data.totalWeight,
         })
       } else {
         wx.showToast({
@@ -219,6 +220,12 @@ Page({
       mouldId: _this.data.mouldList[e.detail.value].id
     })
   },
+  //选择产品
+  chooseType() {
+    wx.navigateTo({
+      url: '/pages/type/type?isChoose=true',
+    })
+  },
   formSubmit(e) {
     if (e.detail.value.cabinetNumber == '') {
       wx.showToast({
@@ -255,13 +262,6 @@ Page({
       })
       return;
     }
-    if (e.detail.value.averageWeight == '') {
-      wx.showToast({
-        title: '请输入平均支重',
-        icon: 'none'
-      })
-      return;
-    }
     if (e.detail.value.count == '') {
       wx.showToast({
         title: '请输入支数',
@@ -269,13 +269,12 @@ Page({
       })
       return;
     }
-    if(_this.data.productId!=''){
+    if (_this.data.productId != '') {
       wx.showLoading({
         title: '加载中',
       })
-      app.com.post('product/update', 
-      { 
-        id:_this.data.productId,
+      app.com.post('product/update', {
+        id: _this.data.productId,
         cabinetNumber: e.detail.value.cabinetNumber,
         typeId: _this.data.typeId,
         mouldId: _this.data.mouldId,
@@ -285,7 +284,7 @@ Page({
         count: e.detail.value.count,
         weight: e.detail.value.weight,
         totalWeight: e.detail.value.totalWeight,
-      }, function (res) {
+      }, function(res) {
         wx.hideLoading()
         if (res.code == 1) {
           wx.showToast({
@@ -303,7 +302,7 @@ Page({
           })
         }
       })
-    }else{
+    } else {
       var id = 0;
       var list = _this.data.list;
       if (_this.data.list.length != 0) {
@@ -314,40 +313,40 @@ Page({
         name: _this.data.type,
         open: false,
         pages: [{
-          id: '',
-          name: '柜号',
-          value: e.detail.value.cabinetNumber
-        },
-        {
-          id: _this.data.typeId,
-          name: '产品型号',
-          value: _this.data.type,
-        },
-        {
-          id: _this.data.mouldId,
-          name: '模号',
-          value: _this.data.mould,
-        },
-        {
-          id: '',
-          name: '长度',
-          value: e.detail.value.length
-        },
-        {
-          id: '',
-          name: '理论支重',
-          value: e.detail.value.theoryWeight
-        },
-        {
-          id: '',
-          name: '平均支重',
-          value: e.detail.value.averageWeight
-        },
-        {
-          id: '',
-          name: '支数',
-          value: e.detail.value.count
-        }
+            id: '',
+            name: '柜号',
+            value: e.detail.value.cabinetNumber
+          },
+          {
+            id: _this.data.typeId,
+            name: '产品型号',
+            value: _this.data.type,
+          },
+          {
+            id: _this.data.mouldId,
+            name: '模号',
+            value: _this.data.mould,
+          },
+          {
+            id: '',
+            name: '长度',
+            value: e.detail.value.length
+          },
+          {
+            id: '',
+            name: '理论支重',
+            value: e.detail.value.theoryWeight
+          },
+          {
+            id: '',
+            name: '平均支重',
+            value: e.detail.value.averageWeight
+          },
+          {
+            id: '',
+            name: '支数',
+            value: e.detail.value.count
+          }
         ]
       };
       if (_this.data.content != '') {
@@ -371,13 +370,13 @@ Page({
         });
         wx.navigateBack({
           delta: 1, // 返回上一级页面。
-          success: function () {
+          success: function() {
             console.log('成功！')
           }
         })
       }
     }
-    
+
 
 
   },

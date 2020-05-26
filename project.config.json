@@ -184,8 +184,8 @@
 				},
 				{
 					"id": -1,
-					"name": "模具生产",
-					"pathName": "pages/work/work",
+					"name": "模具录入",
+					"pathName": "pages/mould/mould",
 					"query": ""
 				}
 			]

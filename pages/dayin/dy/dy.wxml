@@ -10,13 +10,8 @@
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
             <text class='red'>*</text>产品型号</view>
-          <picker bindchange="bindTypeChange" value="{{typeIndex}}" data-selecthx="{{typeList[typeIndex].name}}" range-key="{{'name'}}" range="{{typeList}}">
-          <view name="typeId" style="display:none">{{typeId}}</view >
-           <view class="red fo-30 text-right">
-              {{type}}
-            </view>
-           
-          </picker>
+           <view name="typeId" style="display:none">{{typeId}}</view >
+           <view class="red fo-30 text-right" bindtap="chooseType">{{type}}</view>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
@@ -40,8 +35,7 @@
           <input class='fo-30 text-right' value="{{theoryWeight}}" name="theoryWeight" placeholder='输入理论支重'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
-          <view class='fo-30'>
-            <text class='red'>*</text>平均支重</view>
+          <view class='fo-30'>平均支重</view>
           <input class='fo-30 text-right' value="{{averageWeight}}" name="averageWeight" placeholder='输入平均支重'></input>
         </view>
 

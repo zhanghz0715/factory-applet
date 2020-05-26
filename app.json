@@ -1,21 +1,44 @@
 {
   "pages": [
-    "pages/dayin/dy/dy",
     "pages/index/index",
+    "pages/user/user",
+    
+    "pages/mould/mould",
+    "pages/mould/add/add",
+    "pages/type/type",
+    "pages/type/add/add",
+    
+    "pages/area/area",
+    
+    
+    
+    "pages/register/register",
+    
+    
+    
+     "pages/user/add/add",
+    
+   
+    
+    
+    "pages/mine/mine",
     "pages/banzu/banzu",
+    
+    
+    
     "pages/dayin/dayin",
+    "pages/dayin/dy/dy",
     "pages/richtext/richtext",
     "pages/order/order",
     "pages/daiqu/daiqu",
-    "pages/mine/mine",
+    
     "pages/mine/info/info",
     "pages/mine/address/address",
-    "pages/area/area",
     "pages/login/login",
     "pages/payment/payment",
     "pages/other/other",
     "pages/order/detail/detail",
-    "pages/register/register",
+    
     "pages/mine/addressinfo/addressinfo",
     "pages/mine/chooseaddress/chooseaddress",
     "pages/mine/cash/cash",

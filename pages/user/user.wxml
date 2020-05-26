@@ -1,0 +1,34 @@
+<view class="pa-30">
+  <view class='titem panel-between' wx:for="{{list}}" wx:key="id">
+    <view data-id='{{item.id}}' data-index="{{index}}" style="width:80%;" data-path='/pages/user/add/add?id={{item.id}}&username={{item.username}}&name={{item.name}}&type={{item.type}}' data-names='id' bindtap='navTo'>
+      <view class='panel-between'>
+        <view class='panel-start item-center'>
+          <view class='ma-l20'>
+            <view class='fo-30 bold'>{{item.username}}</view>
+            <view class='fo-26 ma-t10'>姓名：{{item.name}}</view>
+            <view class='fo-26 ma-t10'>类型：{{item.typeName}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <image src="/img/delete.png" style="width:60rpx;height:60rpx;" data-index='{{index}}' bindtap="deleteTap"></image>
+  </view>
+</view>
+<view>
+  <button class='button' style="margin-left:57rpx;" bindtap="addUser" form-type="submit">添加用户</button>
+</view>
+
+<view class='text-center' wx:if="{{list.length == 0 && !load }}">
+  <image src='/img/none.png' style='width:180rpx;height:180rpx'></image>
+  <view class='fo-g fo-26 text-center'>-- 暂无数据 --</view>
+</view>
+<view class="panel-center item-center" wx:if="{{load}}" style='margin-top:20rpx'>
+  <view class="three-quarters-loader">Loading</view>
+  <view class="loading-txt">加载中...</view>
+</view>
+
+<view class="panel-center item-center" wx:if="{{!load && total == list.length && total != 0}}" style='padding:30rpx;padding-top:0 '>
+  <view class='fg1'></view>
+  <view class='fg2'>我是有底线的</view>
+  <view class='fg1'></view>
+</view>
