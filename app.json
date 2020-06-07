@@ -1,31 +1,27 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/user/user",
+    "pages/waste/waste",
+    "pages/waste/add/add",
+   
+    "pages/common/common",
+    "pages/common/product/product",
     
     "pages/mould/mould",
+    
+    "pages/sale/sale",
+    "pages/sale/add/add",
+    "pages/sale/stock/stock",
+    "pages/stock/material/material",
+    "pages/stock/stock",
+    "pages/user/user",
     "pages/mould/add/add",
     "pages/type/type",
     "pages/type/add/add",
-    
     "pages/area/area",
-    
-    
-    
     "pages/register/register",
-    
-    
-    
-     "pages/user/add/add",
-    
-   
-    
-    
+    "pages/user/add/add",
     "pages/mine/mine",
-    "pages/banzu/banzu",
-    
-    
-    
     "pages/dayin/dayin",
     "pages/dayin/dy/dy",
     "pages/richtext/richtext",
@@ -63,7 +59,7 @@
         "selectedIconPath": "img/t2.png"
       },
       {
-        "pagePath": "pages/banzu/banzu",
+        "pagePath": "pages/common/common",
         "text": "日常",
         "iconPath": "img/t7.png",
         "selectedIconPath": "img/t8.png"

@@ -8,37 +8,95 @@ Page({
   data: {
     list: [],
     page: 1,
-    size: 10,
+    imageUrl: '/img/mt.png',
     load: false,
+    show: false,
+    size: 10,
+    flag: 0,
+    total:0,
+    url: '/product/page',
+    productDate: "",
+    date: '日期选择',
+    type: '类型选择',
     typeId: "",
-    total: 0,
-    factoryId: '1',
     isUpdate: false,
+    factoryId: '1', //工厂ID
     dataId: '', //这个是存放操作某条数据的id，用来匹配数据
+    mouldId:'',
+  },
+  //重置查询
+  reset(e) {
+    this.setData({
+      date: '日期选择',
+      type: '类型选择',
+      productDate: "",
+      typeId: ''
+    })
+    this.getList(0)
+  },
+  bindDateChange(e) {
+    this.setData({
+      date: e.detail.value,
+      productDate: e.detail.value,
+    })
+    this.getList(0);
+  },
+  //获取产品类型列表
+  getTypeList() {
+    app.com.post('type/list', {}, function (res) {
+      if (res.code == 1) {
+        _this.setData({
+          typeList: res.data
+        })
+        if (_this.data.typeId != '') {
+          for (var j = 0, size = res.data.length; j < size; j++) {
+            if (res.data[j].id == _this.data.typeId) {
+              _this.setData({
+                typeIndex: j
+              })
+              break;
+            }
+          }
+        }
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  bindTypeChange(e) {
+    this.setData({
+      type: _this.data.typeList[e.detail.value].name,
+      typeId: _this.data.typeList[e.detail.value].id,
+    })
+    this.getList(0);
   },
   navTo(e) {
-    console.log(e)
     app.com.navTo(e)
     this.setData({
       dataId: e.currentTarget.dataset.id,
     })
-  },
-  addUser(e) {
-    wx.navigateTo({
-      url: '/pages/user/add/add',
-    })
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     _this = this
     if (wx.getStorageSync("user").factoryId != null) {
       this.setData({
         factoryId: wx.getStorageSync("user").factoryId
       })
     }
+    if(options.mouldId!=null){
+      _this.setData({
+        mouldId:options.mouldId
+      })
+    }
     _this.getList(0)
+    _this.getTypeList();
   },
 
   getList(type) {
@@ -55,14 +113,22 @@ Page({
         load: true
       })
     }
-    app.com.post('user/page', {
+    app.com.post(this.data.url, {
       current: this.data.page,
       size: this.data.size,
-      factoryId: this.data.factoryId
-    }, function(res) {
+      productDate: this.data.productDate,
+      typeId: this.data.typeId,
+      factoryId: this.data.factoryId,
+      mouldId:this.data.mouldId
+    }, function (res) {
       wx.stopPullDownRefresh()
       if (res.code == 1) {
         let re = res.data.records
+        console.log(re);
+        for (let i in re) {
+          re[i].createTime = app.com.js_date_time(re[i].createTime)
+          re[i].productDate = app.com.js_date_time(re[i].productDate)
+        }
         let arr = []
         if (!_this.data.isUpdate) {
           if (type == 0) {
@@ -75,8 +141,12 @@ Page({
           }
           _this.setData({
             list: arr,
+            productList: arr,
+            productPage: _this.data.page,
+            productToal: res.data.total,
             total: res.data.total,
-            load: false
+            load: false,
+            show: true,
           })
         } else {
           let content;
@@ -95,12 +165,9 @@ Page({
           }
           _this.setData({
             list: arr,
-            load: false,
             isUpdate: false,
           })
         }
-
-
       } else {
         _this.setData({
           load: false
@@ -115,80 +182,52 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     if (wx.getStorageSync("isRefresh")) {
       _this.getList(0);
       wx.removeStorageSync("isRefresh")
     }
     if (wx.getStorageSync("isUpdate")) {
-      console.log(wx.getStorageSync("isUpdate"))
       _this.setData({
         isUpdate: true,
       })
       _this.getList();
       wx.removeStorageSync("isUpdate")
     }
-  },
-  deleteTap(e) {
-    let index = e.currentTarget.dataset.index;
-    _this.deleteUser(_this.data.list[index].id, index);
-  },
-  deleteUser(id, index) {
-    wx.showModal({
-      title: '提示',
-      content: '您确定要删除该用户吗？',
-      success: function(res) {
-        if (res.confirm) {
-          wx.showLoading({
-            title: '加载中',
-          })
-          app.com.post('user/delete', {
-            userId: id,
-          }, function(res) {
-            wx.hideLoading();
-            var list = _this.data.list;
-            if (res.code == 1) {
-              wx.showToast({
-                title: '删除成功',
-                icon: 'none'
-              })
-              list.splice(index, 1);
-              _this.setData({
-                list: list
-              })
-            }
-          });
-        }
-
-      }
-    })
-
-  },
-
+ },
 
 
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
-    _this.getList(0)
+  onPullDownRefresh: function () {
+    _this.getList(0);
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
     if (this.data.list.length < this.data.total) {
-      _this.getList(1)
+      _this.getList(1);
     }
   },
-
+  //预览图片，放大预览
+  preview(event) {
+    let currentUrl = event.currentTarget.dataset.src
+    var urls = [];
+    urls.push(currentUrl);
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls:urls,
+    })
+  },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
       title: '杰兴铝材排产仓管系统',
       path: '/pages/index/index'

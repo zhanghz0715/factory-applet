@@ -1,0 +1,37 @@
+<view class='pa-30'>
+
+  <view class='bz'>
+    <view style='height:60rpx'>
+      <view class="avatar">
+        <open-data type="userAvatarUrl" mode="aspectFill"></open-data>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" report-submit="true">
+      <view class='panel ra-10 '>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>重量</view>
+          <input class='fo-30 text-right' bindinput="watchWeight" confirm-type="weight" value="{{weight}}" name="weight" placeholder='输入重量'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>价格</view>
+          <input class='fo-30 text-right' bindinput="watchTotal" confirm-hold value="{{price}}" name="price" placeholder='输入价格'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>总价</view>
+          <input class='fo-30 text-right' confirm-hold value="{{totalPrice}}" name="totalPrice" placeholder='输入总价'></input>
+        </view>
+
+      </view>
+      <button class='btns ' form-type="submit">提交</button>
+    </form>
+
+  </view>
+  <!-- <view class='panel-center item-center'>
+    <view class='fo-28 fo-b text-center '>费用参考</view>
+    <view class='fo-28 fo-b text-center ma-l30'>代理商入口</view>
+  </view> -->
+
+</view>

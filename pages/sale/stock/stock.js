@@ -13,31 +13,53 @@ Page({
     typeId: "",
     total: 0,
     factoryId: '1',
-    isUpdate: false,
-    dataId: '', //这个是存放操作某条数据的id，用来匹配数据
+    name: '',
+  },
+  searchInput(e) {
+    let search = e.detail.value
+    if (search == '') {
+      this.data.name = ''
+    } else {
+      this.data.name = search
+    }
+    this.getList(0)
+  },
+  chooseType(e) {
+    let index = e.currentTarget.dataset.index;
+    var list = _this.data.list;
+    var pages = getCurrentPages();
+    if (pages.length > 1) {
+      var prevPage = pages[pages.length - 2];
+      prevPage.setData({
+        type: list[index].name,
+        typeId: list[index].typeId,
+        weight:list[index].theoryWeight
+      });
+      wx.navigateBack({
+        delta: 1, // 返回上一级页面。
+        success: function () { }
+      })
+    }
   },
   navTo(e) {
-    console.log(e)
-    app.com.navTo(e)
     this.setData({
       dataId: e.currentTarget.dataset.id,
-    })
-  },
-  addUser(e) {
-    wx.navigateTo({
-      url: '/pages/user/add/add',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    _this = this
     if (wx.getStorageSync("user").factoryId != null) {
       this.setData({
         factoryId: wx.getStorageSync("user").factoryId
       })
     }
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: '#6e42d3',
+    })
+    _this = this
     _this.getList(0)
   },
 
@@ -55,10 +77,11 @@ Page({
         load: true
       })
     }
-    app.com.post('user/page', {
+    app.com.post('stock/page', {
       current: this.data.page,
       size: this.data.size,
-      factoryId: this.data.factoryId
+      factoryId: this.data.factoryId,
+      name: this.data.name,
     }, function(res) {
       wx.stopPullDownRefresh()
       if (res.code == 1) {
@@ -116,55 +139,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (wx.getStorageSync("isRefresh")) {
-      _this.getList(0);
-      wx.removeStorageSync("isRefresh")
-    }
-    if (wx.getStorageSync("isUpdate")) {
-      console.log(wx.getStorageSync("isUpdate"))
-      _this.setData({
-        isUpdate: true,
-      })
-      _this.getList();
-      wx.removeStorageSync("isUpdate")
-    }
-  },
-  deleteTap(e) {
-    let index = e.currentTarget.dataset.index;
-    _this.deleteUser(_this.data.list[index].id, index);
-  },
-  deleteUser(id, index) {
-    wx.showModal({
-      title: '提示',
-      content: '您确定要删除该用户吗？',
-      success: function(res) {
-        if (res.confirm) {
-          wx.showLoading({
-            title: '加载中',
-          })
-          app.com.post('user/delete', {
-            userId: id,
-          }, function(res) {
-            wx.hideLoading();
-            var list = _this.data.list;
-            if (res.code == 1) {
-              wx.showToast({
-                title: '删除成功',
-                icon: 'none'
-              })
-              list.splice(index, 1);
-              _this.setData({
-                list: list
-              })
-            }
-          });
-        }
 
-      }
-    })
+
 
   },
-
 
 
 

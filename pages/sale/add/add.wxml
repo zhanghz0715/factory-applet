@@ -1,0 +1,62 @@
+<view class='pa-30'>
+
+  <view class='bz'>
+    <view style='height:60rpx'>
+      <view class="avatar">
+        <open-data type="userAvatarUrl" mode="aspectFill"></open-data>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" report-submit="true">
+      <view class='panel ra-10 '>
+        <view class='pa-t30 pa-b20 panel-between item-center border-b'>
+          <view class='fo-30'>日期</view>
+          <picker mode="date" value="{{saleDate}}" bindchange="bindDateChange">
+            <view class="fo-30 text-right" name="saleDate">{{saleDate}}</view>
+          </picker>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>产品</view>
+          <view class='fo-30 text-right' style="color:#808080" name="type" bindtap="chooseType">{{type}}</view>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>理论支重</view>
+          <input class='fo-30 text-right' value="{{weight}}" name="weight" placeholder='输入重量'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>销售支数</view>
+          <input class='fo-30 text-right' bindinput="watchCount" value="{{count}}" name="count" placeholder='输入支数'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>单价</view>
+          <input class='fo-30 text-right' bindinput="watchTotal" value="{{price}}" name="price" placeholder='输入单价'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>
+            <text class='red'>*</text>总价</view>
+          <input class='fo-30 text-right' value="{{totalPrice}}" name="totalPrice" placeholder='输入总价'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>收款</view>
+          <input class='fo-30 text-right' bindinput="collectMoney" value="{{collectMoney}}" name="collectMoney" placeholder='输入收款'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+          <view class='fo-30'>欠款</view>
+          <input class='fo-30 text-right'value="{{arrears}}" name="arrears" placeholder='输入欠款'></input>
+        </view>
+
+
+      </view>
+      <button class='btns ' form-type="submit">提交</button>
+    </form>
+
+  </view>
+  <!-- <view class='panel-center item-center'>
+    <view class='fo-28 fo-b text-center '>费用参考</view>
+    <view class='fo-28 fo-b text-center ma-l30'>代理商入口</view>
+  </view> -->
+
+</view>

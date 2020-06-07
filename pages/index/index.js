@@ -29,9 +29,17 @@ Page({
         wx.navigateTo({
           url: '/pages/user/user?index=' + index,
         })
-      } else if (name == '型号管理') {
+      } else if (name == '产品管理') {
         wx.navigateTo({
           url: '/pages/type/type?index=' + index,
+        })
+      } else if (name == '财务管理') {
+        wx.navigateTo({
+          url: '/pages/sale/sale?index=' + index,
+        })
+      } else if (name == '库存管理') {
+        wx.navigateTo({
+          url: '/pages/stock/stock?index=' + index,
         })
       } else {
         wx.showModal({

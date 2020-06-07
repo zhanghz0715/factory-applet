@@ -1,0 +1,92 @@
+<view class="bbf panel-between">
+  <view wx:for="{{tag}}" class='bbf-item ' wx:key="index" data-index='{{index}}' bindtap='changeTag'>
+    <view class='fo-28 lh-90 text-center {{index == flag ? "bold fo-t":"fo-g"}}'>{{item}}</view>
+    <view class='botn' wx:if="{{index == flag}}"></view>
+  </view>
+</view>
+<view style='height:90rpx'></view>
+<view class='pa-l30 pa-r30' style="background-color: #FDF5E6;" wx:if="{{flag==0}}">
+  <view class='content panel-between'>
+    <view class='panel-start item-center'>
+      <view class='ma-l20'>
+        <view class='fo-30 ma-t10'>总库存：
+          <text>{{material}}</text>
+        </view>
+        <view class='fo-26 ma-t10'>生产用量：
+          <text>{{product}}</text>
+        </view>
+        <view class='fo-26 ma-t10'>废料：
+          <text>{{waste}}</text>
+        </view>
+        <view class='fo-26 ma-t10'>剩余：
+          <text>{{surplus}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='pa-l30 pa-r30' style="background-color: #FDF5E6;" wx:if="{{flag==1}}">
+  <view class='content panel-between'>
+    <view class='panel-start item-center'>
+      <view class='ma-l20'>
+        <view class='pa-10 panel-between item-center' style="background-color:white;width:600rpx;">
+          <view class='panel-start item-center'>
+            <input class='fo-28 ma-l20'  placeholder='输入销售编号' bindinput='searchInput'></input>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="pa-30" wx:if="{{flag==0&&!load}}">
+  <view class='titem panel-between' wx:for="{{list}}" wx:key="id">
+    <view data-id='{{item.id}}' data-index="{{index}}" style="width:80%;" data-path='/pages/stock/material/material?id={{item.id}}&weight={{item.weight}}&price={{item.price}}&totalPrice={{item.totalPrice}}' data-names='id' bindtap='navTo'>
+      <view class='panel-between'>
+        <view class='panel-start item-center'>
+          <view class='ma-l20'>
+            <view class='fo-30 bold'>{{item.createTime}}</view>
+            <view class='fo-26 ma-t10'>重量：{{item.weight}}</view>
+            <view class='fo-26 ma-t10'>单价：{{item.price}}</view>
+            <view class='fo-26 ma-t10'>总价：{{item.totalPrice}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <image src="/img/delete.png" style="width:60rpx;height:60rpx;" data-index='{{index}}' bindtap="deleteTap"></image>
+  </view>
+</view>
+
+<view class="pa-30" wx:if="{{flag==1&&!load}}">
+  <view class='titem panel-between' wx:for="{{list}}" wx:key="id">
+    <view data-id='{{item.id}}' data-index="{{index}}" data-names='id'>
+      <view class='panel-between'>
+        <view class='panel-start item-center'>
+          <view class='ma-l20'>
+            <view class='fo-30 bold'>{{item.name}}</view>
+            <view class='fo-26 ma-t10'>支数：{{item.count}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<button class='button' wx:if="{{flag==0}}" style="margin-left:57rpx;" bindtap="addMaterial" form-type="submit">录入原材料</button>
+<view class='text-center' wx:if="{{list.length == 0 && !load }}">
+  <image src='/img/none.png' style='width:180rpx;height:180rpx'></image>
+  <view class='fo-g fo-26 text-center'>-- 暂无数据 --</view>
+</view>
+<view class="panel-center item-center" wx:if="{{load}}" style='margin-top:20rpx'>
+  <view class="three-quarters-loader">Loading</view>
+  <view class="loading-txt">加载中...</view>
+</view>
+
+<view class="panel-center item-center" wx:if="{{!load && total == list.length && total != 0}}" style='padding:30rpx;padding-top:0 '>
+  <view class='fg1'></view>
+  <view class='fg2'>我是有底线的</view>
+  <view class='fg1'></view>
+</view>
