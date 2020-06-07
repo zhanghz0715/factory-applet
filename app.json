@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/waste/waste",
     "pages/waste/add/add",

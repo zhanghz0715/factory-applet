@@ -41,6 +41,10 @@ Page({
         wx.navigateTo({
           url: '/pages/stock/stock?index=' + index,
         })
+      }  else if (name == '废料管理') {
+        wx.navigateTo({
+          url: '/pages/waste/waste?index=' + index,
+        })
       } else {
         wx.showModal({
           title: '提示',
