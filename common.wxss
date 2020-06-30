@@ -263,6 +263,26 @@
   padding-bottom: 30rpx;
 }
 
+.pa-40 {
+  padding: 40rpx;
+}
+
+.pa-l40 {
+  padding-left: 40rpx;
+}
+
+.pa-r40 {
+  padding-right: 40rpx;
+}
+
+.pa-t40 {
+  padding-top: 40rpx;
+}
+
+.pa-b40 {
+  padding-bottom: 40rpx;
+}
+
 /*圆角*/
 
 .ra-30 {
@@ -637,13 +657,12 @@
 }
 
 .delete-img {
-  width: 40rpx;
-  height: 40rpx;
-  margin-left: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 .delete{
-  background:#f3ca7e;
-  width:20%;
+  background:linear-gradient(to right top,#6183dd,#6e42d3);
+  width:15%;
+  text-align: center;
   color:white;
-  display:flex;
 }

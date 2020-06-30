@@ -8,26 +8,30 @@
     </view>
     <form bindsubmit="formSubmit" report-submit="true">
       <view class='panel ra-10 '>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>供应商</view>
           <input class='fo-30 text-right' confirm-type="next" value="{{supplier}}" name="supplier" placeholder='输入供应商'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>型号</view>
           <input class='fo-30 text-right' confirm-hold value="{{name}}" name="name" placeholder='输入型号'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>产品</view>
           <view class='fo-30 text-right' style="color:#808080" name="type" bindtap="chooseType">{{type}}</view>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20' wx:if="{{isUpdate}}">
+          <view class='pa-t30 panel-between item-center border-b pa-b30'>
+          <view class='fo-30'>备注</view>
+          <input class='fo-30 text-right' confirm-hold value="{{remark}}" name="remark" placeholder='输入备注'></input>
+        </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b30' wx:if="{{isUpdate}}">
           <view class='fo-30'>氧化情况</view>
           <input class='fo-30 text-right' confirm-hold value="{{oxidation}}" name="oxidation" placeholder='输入氧化情况'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20' wx:if="{{isUpdate}}">
+        <view class='pa-t30 panel-between item-center border-b pa-b30' wx:if="{{isUpdate}}">
           <view class='fo-30'>
             <text class='red'>*</text>状态</view>
           <radio-group bindchange="radioChange">

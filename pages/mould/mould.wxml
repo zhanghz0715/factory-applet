@@ -6,19 +6,19 @@
 </view>
 
 <view class='pa-l30'>
-  <view class=' panel-between item-center border-b ' wx:for="{{list}}" wx:key="index">
+  <view class=' panel-between item-center border-b pa-t20 pa-b10' wx:for="{{list}}" wx:key="index">
     <view>
       <checkbox-group bindchange="checkboxChange" data-index="{{index}}">
         <checkbox data-index="{{index}}" />
       </checkbox-group>
     </view>
-    <view class="pa-t30 pa-b20 fo-28" style="width:80%" data-index='{{index}}' bindtap='checkedIt'> {{item.name}}
+    <view class="pa-t30 pa-b20 fo-28" style="width:100%" data-index='{{index}}' bindtap='checkedIt'> {{item.name}}
       <text class="fo-28 pa-r20" style="float:right;">{{item.typeName}} | {{item.statusName}}</text>
     </view>
-    <view class="pa-t30 pa-b20 fo-28 pa-b delete" data-index='{{index}}' bindtap="deleteTap">
+    <!-- <view class="pa-t30 pa-b20 fo-28 pa-b delete" data-index='{{index}}' bindtap="deleteTap">
       <image class="delete-img" src="/img/delete1.png"></image>
       <text>删除</text>
-    </view>
+    </view> -->
   </view>
 </view>
 <view class="add">

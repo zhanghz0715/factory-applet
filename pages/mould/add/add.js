@@ -15,6 +15,7 @@ Page({
     imageUrl: '',
     imageId: '', //存在数据库的图片ID
     oxidation:'',//氧化情况
+    remark:'',//备注
     factoryId: '1',
     isLocalImg: false,
     isUpdate:false
@@ -58,6 +59,7 @@ Page({
           imageUrl: content.image,
           imageId: content.imageId, //存在数据库的图片ID，
           oxidation:content.oxidation,
+          remark:content.remark,
           isUpdate:true
         })
       } else {
@@ -154,6 +156,7 @@ Page({
         supplier: e.detail.value.supplier,
         status:_this.data.status,
         oxidation: e.detail.value.oxidation,
+        remark:e.detail.value.remark,
         imageId: _this.data.imageId
       }, function(res) {
         wx.hideLoading()
@@ -182,6 +185,7 @@ Page({
         typeId: _this.data.typeId,
         supplier: e.detail.value.supplier,
         imageId: _this.data.imageId,
+        remark:e.detail.value.remark,
         factoryId: _this.data.factoryId
       }, function(res) {
         wx.hideLoading()

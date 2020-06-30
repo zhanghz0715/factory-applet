@@ -6,11 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    typeId:'',//产品ID
-    type:'选择产品',//产品名称
-    weight: '', //重量
-    count:'',//销售数量
-    price: '', //单价
+    weight: '', //总重量
+    count:'',//总支数
     totalPrice: '', //总价
     collectMoney:'0',//收款
     arrears:'0',//欠款
@@ -33,13 +30,10 @@ Page({
       _this.setData({
         saleId: options.id,
         weight: options.weight,
-        price: options.price,
         totalPrice: options.totalPrice,
         count:options.count,
         collectMoney:options.collectMoney,
         arrears:options.arrears,
-        type:options.typeName,
-        typeId:options.typeId
       })
       wx.setNavigationBarTitle({
         title: '修改信息'
@@ -52,27 +46,6 @@ Page({
       saleDate: e.detail.value
     })
   },
-  // 监听输入
-  watchCount: function (event) {
-    _this.setData({
-      count: event.detail.value
-    })
-    if (_this.data.price != '' && _this.data.weight != '') {
-      _this.setData({
-        totalPrice: (parseFloat(_this.data.weight) * parseFloat(_this.data.price) * parseFloat(event.detail.value)).toFixed(2)
-      })
-    }
-
-  },
-  watchTotal: function (event) {
-    if (_this.data.count != '' && _this.data.weight != '') {
-      var totalPrice = (parseFloat(_this.data.weight) * parseFloat(_this.data.count)* parseFloat(event.detail.value)).toFixed(2);
-      _this.setData({
-        totalPrice:totalPrice,
-        arrears:totalPrice 
-      })
-    }
-  },
 
   collectMoney(e){
     if (_this.data.totalPrice != '') {
@@ -83,36 +56,6 @@ Page({
     }
   },
   formSubmit(e) {
-    if (e.detail.value.type == '') {
-      wx.showToast({
-        title: '请选择产品',
-        icon: 'none'
-      })
-      return;
-    }
-    if (e.detail.value.weight == '') {
-      wx.showToast({
-        title: '请填写支重',
-        icon: 'none'
-      })
-      return;
-    }
-    if (e.detail.value.count == '') {
-      wx.showToast({
-        title: '请填写销售支数',
-        icon: 'none'
-      })
-      return;
-    }
-    console.log(e)
-    if (e.detail.value.price == '') {
-      wx.showToast({
-        title: '请填写单价',
-        icon: 'none'
-      })
-      return;
-    }
-
     if (_this.data.saleId != '') {
       wx.showLoading({
         title: '加载中',

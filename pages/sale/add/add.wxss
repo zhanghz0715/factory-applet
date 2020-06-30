@@ -45,3 +45,12 @@
   margin-top: 50rpx;
   color: #6699CC
 }
+.day{
+  width: 50rpx;
+  height: 50rpx;
+  border: 1px dotted #e1e1e1;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: #888;
+  margin-top: 10rpx;
+}

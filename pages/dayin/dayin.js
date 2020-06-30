@@ -29,7 +29,6 @@ Page({
         url: '/pages/dayin/dy/dy',
       })
     }
-
   },
   bindDateChange(e) {
     this.setData({

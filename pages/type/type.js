@@ -72,6 +72,9 @@ Page({
       prevPage.setData({
         type: list[index].name,
         typeId: list[index].id,
+        length:list[index].length,
+        theoryWeight:list[index].weight,
+        averageWeight:list[index].averageWeight,
       });
       wx.navigateBack({
         delta: 1, // 返回上一级页面。

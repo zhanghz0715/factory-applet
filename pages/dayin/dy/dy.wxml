@@ -2,18 +2,18 @@
   <view>
     <form bindsubmit="formSubmit" report-submit="true">
       <view class='panel ra-10 '>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>柜号</view>
           <input class='fo-30 text-right' value="{{cabinetNumber}}" name="cabinetNumber" placeholder='输入柜号'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>产品型号</view>
            <view name="typeId" style="display:none">{{typeId}}</view >
            <view class="red fo-30 text-right" bindtap="chooseType">{{type}}</view>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>模号</view>
           <picker bindchange="bindMouldChange" value="{{mouldIndex}}" data-selecthx="{{mouldList[mouldIndex].name}}" range-key="{{'name'}}" range="{{mouldList}}">
@@ -24,31 +24,31 @@
             <!-- <input class='fo-30 text-right' value="{{mould}}" name="mould" placeholder='请选择模号'></input> -->
           </picker>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>长度</view>
-          <input class='fo-30 text-right' value="{{length}}" name="length" placeholder='输入长度'></input>
+          <input class='fo-30 text-right' type="digit" value="{{length}}" name="length" placeholder='输入长度'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>理论支重</view>
-          <input class='fo-30 text-right' value="{{theoryWeight}}" name="theoryWeight" placeholder='输入理论支重'></input>
+          <input class='fo-30 text-right' type="digit" value="{{theoryWeight}}" name="theoryWeight" placeholder='输入理论支重'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>平均支重</view>
-          <input class='fo-30 text-right' value="{{averageWeight}}" name="averageWeight" placeholder='输入平均支重'></input>
+          <input class='fo-30 text-right' type="digit" value="{{averageWeight}}" name="averageWeight" placeholder='输入平均支重'></input>
         </view>
 
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
+        <view class='pa-t30 panel-between item-center border-b pa-b30'>
           <view class='fo-30'>
             <text class='red'>*</text>支数</view>
-          <input bindinput="watchCount" class='fo-30 text-right' value="{{count}}" name="count" placeholder='输入支数'></input>
+          <input bindinput="watchCount" type="digit" class='fo-30 text-right' value="{{count}}" name="count" placeholder='输入支数'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20' wx:if="{{show}}">
+        <view class='pa-t30 panel-between item-center border-b pa-b30' wx:if="{{show}}">
           <view class='fo-30'>支重</view>
           <input bindinput="watchWeight" class='fo-30 text-right' value="{{weight}}" name="weight" placeholder='输入支重'></input>
         </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20' wx:if="{{show}}">
+        <view class='pa-t30 panel-between item-center border-b pa-b30' wx:if="{{show}}">
           <view class='fo-30'>重量</view>
           <input class='fo-30 text-right' value="{{totalWeight}}" name="totalWeight" placeholder='输入重量'></input>
         </view>

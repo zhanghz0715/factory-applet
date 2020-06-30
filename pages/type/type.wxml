@@ -6,16 +6,16 @@
 </view>
 
 <view class='pa-l30 {{isChoose?"pa-r30":""}}'>
-  <view class=' panel-between item-center border-b ' wx:for="{{list}}" wx:key="index">
-    <view class="pa-t30 pa-b20 fo-28" wx:if="{{!isChoose}}" style="width:80%" data-index='{{index}}' bindtap='checkedIt'> {{item.name}}
+  <view class=' panel-between item-center border-b' wx:for="{{list}}" wx:key="index">
+    <view class="pa-t40 pa-b20 fo-28" wx:if="{{!isChoose}}" style="width:85%" data-index='{{index}}' bindtap='checkedIt'> {{item.name}}
       <text class="fo-28 pa-r20" style="float:right;">长度：{{item.length}} | 支重：{{item.weight}}</text>
     </view>
-    <view class="pa-t30 pa-b20 fo-28" wx:if="{{isChoose}}" style="width:100%" data-index='{{index}}' bindtap='chooseType'> {{item.name}}
+    <view class="pa-t40 pa-b20 fo-28" wx:if="{{isChoose}}" style="width:100%" data-index='{{index}}' bindtap='chooseType'> {{item.name}}
       <text class="fo-28 pa-r20" style="float:right;">长度：{{item.length}} | 支重：{{item.weight}}</text>
     </view>
-    <view class="pa-t30 pa-b20 fo-28 pa-b delete" wx:if="{{!isChoose}}" data-index='{{index}}' bindtap="deleteTap">
+    <view class="pa-t40 pa-b20 fo-28 pa-b delete" style="width:15%" wx:if="{{!isChoose}}" data-index='{{index}}' bindtap="deleteTap">
       <image class="delete-img" src="/img/delete1.png"></image>
-      <text>删除</text>
+      <!-- <text>删除</text> -->
     </view>
 
 

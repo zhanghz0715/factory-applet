@@ -14,25 +14,40 @@
             <view class="fo-30 text-right" name="saleDate">{{saleDate}}</view>
           </picker>
         </view>
+        <view class='pa-t30 panel-between item-center border-b pa-b20' bindtap='addType'>
+        <view class='fo-30'>添加产品</view>
+        <view class='day' style="color:white;background:linear-gradient(to right top,#6183dd,#6e42d3);">+</view>
+      </view>
+      <block wx:for-items="{{list}}" wx:key="id">
+        <view class="kind-list-item">
+          <view class="kind-list-item-hd">
+            <view class="kind-list-text" id="{{item.id}}" bindtap="kindToggle">{{item.name}}</view>
+            <view class="kind-list-text"></view>
+            <image class="kind-list-img" id="{{item.id}}" src='/img/delete.png' bindtap='deleteProduct'></image>
+            <image class="kind-list-img" id="{{item.id}}" src='/img/change.png'
+            bindtap='editProduct'></image>
+          </view>
+          <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="index">
+                <view class="navigator">
+                  <view class="navigator-text">{{page.name}}</view>
+                  <view class="">{{page.value}}</view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
-            <text class='red'>*</text>产品</view>
-          <view class='fo-30 text-right' style="color:#808080" name="type" bindtap="chooseType">{{type}}</view>
+            <text class='red'>*</text>总支数</view>
+          <input class='fo-30 text-right'  value="{{count}}" name="count" placeholder='输入总支数'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
-            <text class='red'>*</text>理论支重</view>
-          <input class='fo-30 text-right' value="{{weight}}" name="weight" placeholder='输入重量'></input>
-        </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
-          <view class='fo-30'>
-            <text class='red'>*</text>销售支数</view>
-          <input class='fo-30 text-right' bindinput="watchCount" value="{{count}}" name="count" placeholder='输入支数'></input>
-        </view>
-        <view class='pa-t30 panel-between item-center border-b pa-b20'>
-          <view class='fo-30'>
-            <text class='red'>*</text>单价</view>
-          <input class='fo-30 text-right' bindinput="watchTotal" value="{{price}}" name="price" placeholder='输入单价'></input>
+            <text class='red'>*</text>总重</view>
+          <input class='fo-30 text-right' value="{{weight}}" name="weight" placeholder='输入总重'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
