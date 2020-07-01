@@ -1,0 +1,35 @@
+<view class='pa-30'>
+	<view>
+		<form bindsubmit="formSubmit" report-submit="true">
+			<view class='panel ra-10 '>
+				<view class='pa-t30 panel-between item-center border-b pa-b30'>
+					<view class='fo-30'>
+						<text class='red'>*</text>产品</view>
+					<view name="typeId" style="display:none">{{typeId}}</view>
+					<view class="red fo-30 text-right" bindtap="chooseType">{{type}}</view>
+				</view>
+
+				<view class='pa-t30 panel-between item-center border-b pa-b30'>
+					<view class='fo-30'>
+						<text class='red'>*</text>支数</view>
+					<input bindinput="watchCount" type="digit" class='fo-30 text-right' value="{{count}}" name="count" placeholder='输入支数'></input>
+				</view>
+				<view class='pa-t30 panel-between item-center border-b pa-b30'>
+					<view class='fo-30'><text class='red'>*</text>总重</view>
+					<input bindinput="watchWeight" class='fo-30 text-right' value="{{totalWeight}}" name="totalWeight" placeholder='输入总重'></input>
+				</view>
+				<view class='pa-t30 panel-between item-center border-b pa-b30'>
+					<view class='fo-30'><text class='red'>*</text>实际支重</view>
+					<input class='fo-30 text-right' type="digit" value="{{weight}}" name="weight" placeholder='输入实际支重'></input>
+				</view>
+				<view class='pa-t30 panel-between item-center border-b pa-b30'>
+					<view class='fo-30'><text class='red'>*</text>库存</view>
+					<input class='fo-30 text-right' value="{{stock}}" name="stock" placeholder='输入库存'></input>
+				</view>
+			</view>
+			<button class='btns ' form-type="submit">{{btnName}}</button>
+		</form>
+
+	</view>
+
+</view>

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/sale/add/add",
+    "pages/sale/type/type",
     "pages/index/index",
     "pages/mould/mould",
     "pages/dayin/dayin",

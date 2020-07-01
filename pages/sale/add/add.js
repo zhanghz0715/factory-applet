@@ -7,19 +7,20 @@ Page({
    */
   data: {
     weight: '', //总重量
-    count:'',//总支数
+    count: '',//总支数
     totalPrice: '', //总价
-    collectMoney:'0',//收款
-    arrears:'0',//欠款
+    collectMoney: '0',//收款
+    arrears: '0',//欠款
     saleId: '',
     factoryId: '1',
     saleDate: app.com.getNowDate(),
+    list:[],//产品列表
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     _this = this;
     if (wx.getStorageSync("user").factoryId != null) {
       this.setData({
@@ -31,9 +32,9 @@ Page({
         saleId: options.id,
         weight: options.weight,
         totalPrice: options.totalPrice,
-        count:options.count,
-        collectMoney:options.collectMoney,
-        arrears:options.arrears,
+        count: options.count,
+        collectMoney: options.collectMoney,
+        arrears: options.arrears,
       })
       wx.setNavigationBarTitle({
         title: '修改信息'
@@ -41,15 +42,26 @@ Page({
     }
 
   },
-    bindDateChange(e) {
+  addType() {
+    if (_this.data.list.length > 0) {
+      wx.navigateTo({
+        url: '/pages/sale/type/type?list=' + JSON.stringify(_this.data.list),
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/sale/type/type',
+      })
+    }
+  },
+  bindDateChange(e) {
     this.setData({
       saleDate: e.detail.value
     })
   },
 
-  collectMoney(e){
+  collectMoney(e) {
     if (_this.data.totalPrice != '') {
-      var arrears = (parseFloat(_this.data.totalPrice)-parseFloat(e.detail.value)).toFixed(2);
+      var arrears = (parseFloat(_this.data.totalPrice) - parseFloat(e.detail.value)).toFixed(2);
       _this.setData({
         arrears: arrears
       })
@@ -131,14 +143,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 

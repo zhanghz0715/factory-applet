@@ -75,6 +75,8 @@ Page({
         length:list[index].length,
         theoryWeight:list[index].weight,
         averageWeight:list[index].averageWeight,
+        stock:list[index].stock,
+        tempStock:list[index].stock,
       });
       wx.navigateBack({
         delta: 1, // 返回上一级页面。
