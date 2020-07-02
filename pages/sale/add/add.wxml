@@ -23,9 +23,9 @@
           <view class="kind-list-item-hd">
             <view class="kind-list-text" id="{{item.id}}" bindtap="kindToggle">{{item.name}}</view>
             <view class="kind-list-text"></view>
-            <image class="kind-list-img" id="{{item.id}}" src='/img/delete.png' bindtap='deleteProduct'></image>
+            <image class="kind-list-img" id="{{item.id}}" src='/img/delete.png' bindtap='deleteType'></image>
             <image class="kind-list-img" id="{{item.id}}" src='/img/change.png'
-            bindtap='editProduct'></image>
+            bindtap='editType'></image>
           </view>
           <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
             <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">

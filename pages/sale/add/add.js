@@ -67,6 +67,66 @@ Page({
       })
     }
   },
+  /**
+   * 收缩核心代码
+   */
+  kindToggle(e) {
+    const id = e.currentTarget.id
+    const list = this.data.list
+    for (let i = 0, len = list.length; i < len; ++i) {
+      if (list[i].id === id) {
+        list[i].open = !list[i].open
+      } else {
+        list[i].open = false
+      }
+    }
+    /**
+     * key和value名称一样时，可以省略
+     * 
+     * list:list=>list
+     */
+    this.setData({
+      list
+    })
+  },
+    /**
+   * 删除产品
+   */
+  deleteType(e) {
+    wx.showModal({
+      title: '提示',
+      content: '确认要删除该项吗？',
+      success: function(res) {
+        if (res.confirm) {
+          const id = e.currentTarget.id
+          const list = _this.data.list
+          for (let i = 0, len = list.length; i < len; ++i) {
+            if (list[i].id === id) {
+              list.splice(i, 1);
+            }
+          }
+          _this.setData({
+            list
+          })
+        }
+      }
+    })
+  },
+
+  /**
+   * 修改产品
+   */
+  editType(e) {
+    const id = e.currentTarget.id
+    const list = _this.data.list
+    for (let i = 0, len = list.length; i < len; ++i) {
+      if (list[i].id === id) {
+        wx.navigateTo({
+          url: '/pages/sale/type/type?list=' + JSON.stringify(list) + '&content=' + JSON.stringify(list[i])
+        })
+      }
+    }
+  },
   formSubmit(e) {
     if (_this.data.saleId != '') {
       wx.showLoading({

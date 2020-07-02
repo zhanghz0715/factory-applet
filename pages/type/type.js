@@ -26,14 +26,14 @@ Page({
     wx.showModal({
       title: '提示',
       content: '您确定要删除该产品吗？',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           wx.showLoading({
             title: '加载中',
           })
           app.com.post('type/delete', {
             typeId: id,
-          }, function(res) {
+          }, function (res) {
             wx.hideLoading();
             var list = _this.data.list;
             if (res.code == 1) {
@@ -72,15 +72,15 @@ Page({
       prevPage.setData({
         type: list[index].name,
         typeId: list[index].id,
-        length:list[index].length,
-        theoryWeight:list[index].weight,
-        averageWeight:list[index].averageWeight,
-        stock:list[index].stock,
-        tempStock:list[index].stock,
+        length: list[index].length,
+        theoryWeight: list[index].weight,
+        averageWeight: list[index].averageWeight,
+        stock: list[index].stock,
+        tempStock: list[index].stock,
       });
       wx.navigateBack({
         delta: 1, // 返回上一级页面。
-        success: function() {}
+        success: function () {}
       })
     }
   },
@@ -106,7 +106,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     if (wx.getStorageSync("user").factoryId != null) {
       this.setData({
         factoryId: wx.getStorageSync("user").factoryId
@@ -144,7 +144,7 @@ Page({
       size: this.data.size,
       factoryId: this.data.factoryId,
       name: this.data.name,
-    }, function(res) {
+    }, function (res) {
       wx.stopPullDownRefresh()
       if (res.code == 1) {
         let re = res.data.records
@@ -200,7 +200,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     if (wx.getStorageSync("isUpdate")) {
       _this.setData({
         isUpdate: true,
@@ -212,24 +212,20 @@ Page({
       _this.getList(0);
       wx.removeStorageSync("isRefresh")
     }
-
-
-
   },
-
 
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     _this.getList(0)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
     if (this.data.list.length < this.data.total) {
       _this.getList(1)
@@ -239,7 +235,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
       title: '杰兴铝材排产仓管系统',
       path: '/pages/index/index'
