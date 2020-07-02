@@ -165,15 +165,14 @@ Page({
         title: '加载中',
       })
       app.com.post('sale/save', {
-        typeId: _this.data.typeId,
         saleDate: _this.data.saleDate,
         weight: e.detail.value.weight,
         count: e.detail.value.count,
-        price: e.detail.value.price,
         totalPrice: e.detail.value.totalPrice,
         collectMoney: e.detail.value.collectMoney,
         arrears: e.detail.value.arrears,
         factoryId: _this.data.factoryId,
+        list: JSON.stringify(_this.data.list)
       }, function (res) {
         wx.hideLoading()
         if (res.code == 1) {
