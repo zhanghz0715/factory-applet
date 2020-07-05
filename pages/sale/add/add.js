@@ -60,7 +60,7 @@ Page({
   },
 
   collectMoney(e) {
-    if (_this.data.totalPrice != '') {
+    if (_this.data.totalPrice != ''&&e.detail.value!='') {
       var arrears = (parseFloat(_this.data.totalPrice) - parseFloat(e.detail.value)).toFixed(2);
       _this.setData({
         arrears: arrears
@@ -128,6 +128,13 @@ Page({
     }
   },
   formSubmit(e) {
+    if(_this.data.list.length==0){
+      wx.showToast({
+        title: '请添加产品',
+        icon: 'none'
+      })
+      return;
+    }
     if (_this.data.saleId != '') {
       wx.showLoading({
         title: '加载中',
@@ -161,36 +168,45 @@ Page({
         }
       })
     } else {
-      wx.showLoading({
-        title: '加载中',
-      })
-      app.com.post('sale/save', {
-        saleDate: _this.data.saleDate,
-        weight: e.detail.value.weight,
-        count: e.detail.value.count,
-        totalPrice: e.detail.value.totalPrice,
-        collectMoney: e.detail.value.collectMoney,
-        arrears: e.detail.value.arrears,
-        factoryId: _this.data.factoryId,
-        list: JSON.stringify(_this.data.list)
-      }, function (res) {
-        wx.hideLoading()
-        if (res.code == 1) {
-          wx.showToast({
-            title: '添加成功',
-            icon: 'none'
-          })
-          wx.navigateBack({
-            url: '/pages/sale/sale',
-          })
-          wx.setStorageSync('isRefresh', true);
-        } else {
-          wx.showToast({
-            title: res.msg,
-            icon: 'none'
-          })
+      wx.showModal({
+        title: '提示',
+        content: '销售单一旦生成则不能修改产品信息，请确认是否添加？',
+        success: function(res) {
+          if (res.confirm) {
+            wx.showLoading({
+              title: '加载中',
+            })
+            app.com.post('sale/save', {
+              saleDate: _this.data.saleDate,
+              weight: e.detail.value.weight,
+              count: e.detail.value.count,
+              totalPrice: e.detail.value.totalPrice,
+              collectMoney: e.detail.value.collectMoney,
+              arrears: e.detail.value.arrears,
+              factoryId: _this.data.factoryId,
+              list: JSON.stringify(_this.data.list)
+            }, function (res) {
+              wx.hideLoading()
+              if (res.code == 1) {
+                wx.showToast({
+                  title: '添加成功',
+                  icon: 'none'
+                })
+                wx.navigateBack({
+                  url: '/pages/sale/sale',
+                })
+                wx.setStorageSync('isRefresh', true);
+              } else {
+                wx.showToast({
+                  title: res.msg,
+                  icon: 'none'
+                })
+              }
+            })
+          }
         }
       })
+     
     }
   },
   //选择产品

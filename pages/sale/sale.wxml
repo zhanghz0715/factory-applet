@@ -36,9 +36,10 @@
       <view class='panel-between'>
         <view class='panel-start item-center'>
           <view class='ma-l20'>
-            <view class='fo-30 bold'>{{item.saleNumber}}-{{item.saleDate}}</view>
-            <view class='fo-26 ma-t10'>支数：{{item.count}}</view>
-            <view class='fo-26 ma-t10'>单价：{{item.price}}</view>
+            <view class='fo-30 bold'>{{item.saleNumber}}</view>
+            <view class='fo-26 ma-t10'>销售日期：{{item.saleDate}}</view>
+            <view class='fo-26 ma-t10'>总支数：{{item.count}}</view>
+            <view class='fo-26 ma-t10'>总重：{{item.weight}}</view>
             <view class='fo-26 ma-t10'>总价：{{item.totalPrice}}</view>
             <view class='fo-26 ma-t10'>收款：{{item.collectMoney}}</view>
             <view class='fo-26 ma-t10'>欠款：{{item.arrears}}</view>
@@ -56,7 +57,7 @@
       <view class='panel-between'>
         <view class='panel-start item-center'>
           <view class='ma-l20'>
-            <view class='fo-30 bold'>{{item.saleNumber}}-{{item.saleDate}}</view>
+            <view class='fo-30 bold'>{{item.saleNumber}}</view>
             <view class='fo-26 ma-t10'>总价：{{item.totalPrice}}</view>
             <view class='fo-26 ma-t10'>收款：{{item.collectMoney}}</view>
             <view class='fo-26 ma-t10'>欠款：{{item.arrears}}</view>

@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/sale/sale",
     "pages/sale/add/add",
+    "pages/index/index",
+   
     "pages/sale/type/type",
     
     "pages/mould/mould",
@@ -15,7 +17,7 @@
     
     
     
-    "pages/sale/sale",
+    
     
     "pages/sale/stock/stock",
     "pages/stock/material/material",
