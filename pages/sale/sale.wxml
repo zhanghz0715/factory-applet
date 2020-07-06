@@ -32,7 +32,7 @@
 
 <view class="pa-30" wx:if="{{flag==0}}">
   <view class='titem panel-between' wx:for="{{list}}" wx:key="id">
-    <view data-id='{{item.id}}' data-index="{{index}}" style="width:80%;" data-path='/pages/sale/add/add?id={{item.id}}&weight={{item.weight}}&price={{item.price}}&totalPrice={{item.totalPrice}}&count={{item.count}}&collectMoney={{item.collectMoney}}&arrears={{arrears}}&typeId={{item.typeId}}&typeName={{item.typeName}}' data-names='id' bindtap='navTo'>
+    <view data-id='{{item.id}}' data-index="{{index}}" style="width:80%;" data-path='/pages/sale/add/add?id={{item.id}}' data-names='id' bindtap='navTo'>
       <view class='panel-between'>
         <view class='panel-start item-center'>
           <view class='ma-l20'>

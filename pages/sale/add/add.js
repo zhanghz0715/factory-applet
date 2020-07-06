@@ -15,6 +15,8 @@ Page({
     factoryId: '1',
     saleDate: app.com.getNowDate(),
     list:[],//产品列表
+    isShow:true,
+    signName:"添加产品"
 
   },
   /**
@@ -28,13 +30,26 @@ Page({
       })
     };
     if (options.id != null) {
-      _this.setData({
-        saleId: options.id,
-        weight: options.weight,
-        totalPrice: options.totalPrice,
-        count: options.count,
-        collectMoney: options.collectMoney,
-        arrears: options.arrears,
+      app.com.post('sale/getDetail', {id:options.id}, function(res) {
+        if (res.code == 1) {
+          _this.setData({
+            saleId: options.id,
+            weight: res.data.sale.weight,
+            totalPrice: res.data.sale.totalPrice,
+            count: res.data.sale.count,
+            collectMoney: res.data.sale.collectMoney,
+            arrears: res.data.sale.arrears,
+            list:res.data.list,
+            isShow:false,
+            signName:"销售产品"
+          })
+
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: 'none'
+          })
+        }
       })
       wx.setNavigationBarTitle({
         title: '修改信息'
@@ -43,6 +58,9 @@ Page({
 
   },
   addType() {
+    if(!_this.data.isShow){
+      return;
+    }
     if (_this.data.list.length > 0) {
       wx.navigateTo({
         url: '/pages/sale/type/type?list=' + JSON.stringify(_this.data.list),
@@ -72,8 +90,10 @@ Page({
    */
   kindToggle(e) {
     const id = e.currentTarget.id
+    console.log(id);
     const list = this.data.list
     for (let i = 0, len = list.length; i < len; ++i) {
+      console.log(list[i].id);
       if (list[i].id === id) {
         list[i].open = !list[i].open
       } else {

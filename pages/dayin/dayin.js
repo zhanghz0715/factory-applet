@@ -13,7 +13,8 @@ Page({
     total_fee: 0,
     address: '',
     date: app.com.getNowDate(),
-    list: []
+    list: [],
+    factoryId: '1',
   },
 
   navTo(e) {
@@ -102,6 +103,11 @@ Page({
    */
   onLoad: function(options) {
     _this = this;
+    if (wx.getStorageSync("user").factoryId != null) {
+      this.setData({
+        factoryId: wx.getStorageSync("user").factoryId
+      })
+    }
     if(options.list!=null){
       var list = JSON.parse(options.list)
       _this.setData({
@@ -114,9 +120,6 @@ Page({
 
   },
   formSubmit(e) {
-    wx.switchTab({
-      url: '/pages/banzu/banzu',
-    })
     wx.setStorageSync('isRefresh', true);
     let list = _this.data.list;
     if (list.length == 0) {
@@ -136,6 +139,7 @@ Page({
       openMachine: e.detail.value.openMachine,
       topNote: e.detail.value.topNote,
       postNote: e.detail.value.postNote,
+      factoryId:_this.data.factoryId,
       list: JSON.stringify(_this.data.list)
     }, function(res) {
       wx.hideLoading()
@@ -145,7 +149,7 @@ Page({
           icon: 'none'
         })
         wx.switchTab({
-          url: '/pages/banzu/banzu',
+          url: '/pages/common/common',
         })
         wx.setStorageSync('isRefresh', true);
       } else {

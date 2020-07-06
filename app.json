@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/sale/sale",
     "pages/sale/add/add",
-    "pages/index/index",
+    
    
     "pages/sale/type/type",
     
@@ -26,20 +27,16 @@
     "pages/mould/add/add",
     "pages/type/type",
     "pages/type/add/add",
-    "pages/area/area",
     "pages/register/register",
     "pages/user/add/add",
     "pages/mine/mine",
     
     "pages/dayin/dy/dy",
     "pages/richtext/richtext",
-    "pages/order/order",
-    "pages/daiqu/daiqu",
-    
+    "pages/order/order",    
     "pages/mine/info/info",
     "pages/mine/address/address",
     "pages/login/login",
-    "pages/payment/payment",
     "pages/other/other",
     "pages/order/detail/detail",
     

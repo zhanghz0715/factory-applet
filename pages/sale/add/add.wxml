@@ -10,21 +10,21 @@
       <view class='panel ra-10 '>
         <view class='pa-t30 pa-b20 panel-between item-center border-b'>
           <view class='fo-30'>日期</view>
-          <picker mode="date" value="{{saleDate}}" bindchange="bindDateChange">
+          <picker mode="date" value="{{saleDate}}" disabled="{{!isShow?'disabled':''}}"  bindchange="bindDateChange">
             <view class="fo-30 text-right" name="saleDate">{{saleDate}}</view>
           </picker>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20' bindtap='addType'>
-        <view class='fo-30'>添加产品</view>
-        <view class='day' style="color:white;background:linear-gradient(to right top,#6183dd,#6e42d3);">+</view>
+        <view class='fo-30'>{{signName}}</view>
+        <view  wx:if="{{isShow}}" class='day' style="color:white;background:linear-gradient(to right top,#6183dd,#6e42d3);">+</view>
       </view>
       <block wx:for-items="{{list}}" wx:key="id">
         <view class="kind-list-item">
           <view class="kind-list-item-hd">
             <view class="kind-list-text" id="{{item.id}}" bindtap="kindToggle">{{item.name}}</view>
             <view class="kind-list-text"></view>
-            <image class="kind-list-img" id="{{item.id}}" src='/img/delete.png' bindtap='deleteType'></image>
-            <image class="kind-list-img" id="{{item.id}}" src='/img/change.png'
+            <image wx:if="{{isShow}}" class="kind-list-img" id="{{item.id}}" src='/img/delete.png' bindtap='deleteType'></image>
+            <image wx:if="{{isShow}}" class="kind-list-img" id="{{item.id}}" src='/img/change.png'
             bindtap='editType'></image>
           </view>
           <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
@@ -42,17 +42,17 @@
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
             <text class='red'>*</text>总支数</view>
-          <input class='fo-30 text-right'  value="{{count}}" name="count" placeholder='输入总支数'></input>
+          <input class='fo-30 text-right' disabled="disabled" value="{{count}}" name="count" placeholder='输入总支数'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
             <text class='red'>*</text>总重</view>
-          <input class='fo-30 text-right' value="{{weight}}" name="weight" placeholder='输入总重'></input>
+          <input class='fo-30 text-right' disabled="disabled" value="{{weight}}" name="weight" placeholder='输入总重'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
             <text class='red'>*</text>总价</view>
-          <input class='fo-30 text-right' value="{{totalPrice}}" name="totalPrice" placeholder='输入总价'></input>
+          <input class='fo-30 text-right' disabled="disabled" value="{{totalPrice}}" name="totalPrice" placeholder='输入总价'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>收款</view>
