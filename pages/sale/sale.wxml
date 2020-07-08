@@ -47,7 +47,7 @@
         </view>
       </view>
     </view>
-    <image src="/img/delete.png" wx:if="{{flag==0}}" style="width:60rpx;height:60rpx;" data-index='{{index}}' bindtap="deleteTap"></image>
+    <!-- <image src="/img/delete.png" wx:if="{{flag==0}}" style="width:60rpx;height:60rpx;" data-index='{{index}}' bindtap="deleteTap"></image> -->
   </view>
 </view>
 

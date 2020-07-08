@@ -58,7 +58,7 @@ Page({
     }
   },
   onLoad: function(options) {
-    _this = this
+    _this = this;
     this.login()
   },
   login() {
@@ -74,6 +74,7 @@ Page({
         _this.setData({
           isFirst: false
         })
+       
       }
     })
   },
@@ -82,10 +83,8 @@ Page({
     this.getServer(wx.getStorageSync('user').id)
   },
   onShow() {
-    if (!this.data.isFirst) {
-      if (_this.data.list.length == 0) {
-        _this.getServer(wx.getStorageSync('user').id)
-      }
+    if (_this.data.list.length == 0&&wx.getStorageSync('user')!='') {
+      _this.getServer(wx.getStorageSync('user').id)
     }
   },
   getServer(id) {

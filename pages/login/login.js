@@ -76,9 +76,10 @@ Page({
             })
             // wx.setStorageSync("user", user)
             setTimeout(function() {
-              wx.navigateBack({
-                detal: 1
+              wx.switchTab({
+                url: '/pages/index/index',
               })
+        
             }, 900)
           } 
         })

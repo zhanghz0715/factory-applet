@@ -12,7 +12,7 @@
       
       <input class='bgg ra-10' type='number' maxlength='11' data-name='username' bindinput='ddinput' placeholder='输入11位手机号(必填)'></input>
       
-      <input class='bgg ra-10 ma-t30' type='number' maxlength='6' data-name='password' bindinput='ddinput' placeholder='输入密码(选填)'></input>
+      <input class='bgg ra-10 ma-t30' type='number' maxlength='6' data-name='password' bindinput='ddinput' placeholder='输入密码(必填)'></input>
       
     </view>
     <view class="fo-26 ma-t30 fo-w text-center " style='margin-top:100rpx'>获得你的公开信息（昵称、头像等）</view>

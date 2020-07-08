@@ -73,19 +73,32 @@ Page({
     _this.setData({
       count: event.detail.value
     })
-    if (_this.data.weight != "") {
+    if(event.detail.value==''){
       _this.setData({
-        totalWeight: parseFloat(_this.data.weight) * parseInt(event.detail.value)
+        totalWeight:''
+      })
+    }
+    if (_this.data.weight != "" &&event.detail.value!='') {
+      _this.setData({
+        totalWeight: parseFloat(parseFloat(_this.data.weight) * parseInt(event.detail.value)).toFixed(2)
       })
     }
   },
   // 监听输入
   watchWeight: function(event) {
-    var totalWeight = parseInt(parseFloat(event.detail.value) * parseInt(_this.data.count))
-    _this.setData({
-      weight: event.detail.value,
-      totalWeight: totalWeight
-    })
+    if(event.detail.value==''){
+      _this.setData({
+        totalWeight:''
+      })
+    }
+    if(event.detail.value!=''&&_this.data.count!=''){
+      var totalWeight = parseFloat(parseFloat(event.detail.value) * parseInt(_this.data.count)).toFixed(2)
+      _this.setData({
+        weight: event.detail.value,
+        totalWeight: totalWeight
+      })
+    }
+    
   },
 
   analyzeData(content) {
