@@ -35,15 +35,10 @@
     "pages/richtext/richtext",
     "pages/order/order",    
     "pages/mine/info/info",
-    "pages/mine/address/address",
     "pages/login/login",
     "pages/other/other",
     "pages/order/detail/detail",
     
-    "pages/mine/addressinfo/addressinfo",
-    "pages/mine/chooseaddress/chooseaddress",
-    "pages/mine/cash/cash",
-    "pages/mine/jdsm/jdsm",
     "pages/mine/about/about"
     
   ],

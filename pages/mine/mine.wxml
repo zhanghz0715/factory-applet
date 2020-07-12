@@ -8,23 +8,23 @@
     </view>
   </view>
   <view class='pa-t30 pa-b10 panel-between'>
-    <view class='btn-1 panel-center item-center' data-index='1' bindtap='swtobz'>
+    <view class='btn-1 panel-center item-center' data-index='1' bindtap='swtoProduct'>
       <image src='/img/mt.png' class='icon-40'></image>
       <view class='fo-30 ma-l20'>排产管理</view>
     </view>
-    <view class='btn-1 panel-center item-center' data-index='2' bindtap='swtobz'>
+    <view class='btn-1 panel-center item-center' data-index='2' bindtap='swtoMould'>
       <image src='/img/mt2.png' class='icon-40'></image>
       <view class='fo-30 ma-l20'>模具管理</view>
     </view>
   </view>
-  <view class='panel panel-between item-center ma-t20  border-b' data-path='/pages/mine/info/info' >
+  <view class='panel panel-between item-center ma-t20  border-b' data-path='/pages/mine/info/info' bindtap='navTo'>
     <view class='panel-start item-center'>
       <image src='/img/d1.png' class='icon-35 ma-r20'></image>
       <view class='fo-28'>我的信息</view>
     </view>
     <image src='/img/right.png' class='icon-25'></image>
   </view>
-  <button class='filter-btn' open-type='contact'>
+  <!-- <button class='filter-btn' open-type='contact'>
     <view class='panel panel-between item-center ma-t20 border-b'>
       <view class='panel-start item-center'>
       <image src='/img/d2.png' class='icon-35 ma-r20'></image>
@@ -32,7 +32,7 @@
       </view>
       <image src='/img/right.png' class='icon-25'></image>
     </view>
-  </button>
+  </button> -->
   <view class='panel panel-between item-center' data-path='/pages/mine/about/about' bindtap='navTo'>
     <view class='panel-start item-center'>
       <image src='/img/d6.png' class='icon-35 ma-r20'></image>

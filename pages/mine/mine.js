@@ -7,10 +7,14 @@ Page({
   data: {
 
   },
-  swtobz(e){
-    wx.setStorageSync("bzflag", e.currentTarget.dataset.index)
+  swtoProduct(e){
     wx.switchTab({
-      url: '/pages/banzu/banzu',
+      url: '/pages/common/common',
+    })
+  },
+  swtoMould(e){
+    wx.navigateTo({
+      url: '/pages/mould/mould',
     })
   },
   navTo(e) {

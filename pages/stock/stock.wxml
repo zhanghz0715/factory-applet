@@ -32,7 +32,7 @@
       <view class='ma-l20'>
         <view class='pa-10 panel-between item-center' style="background-color:white;width:600rpx;">
           <view class='panel-start item-center'>
-            <input class='fo-28 ma-l20'  placeholder='输入销售编号' bindinput='searchInput'></input>
+            <input class='fo-28 ma-l20'  placeholder='输入产品名称' bindinput='searchInput'></input>
           </view>
         </view>
       </view>
@@ -66,6 +66,7 @@
           <view class='ma-l20'>
             <view class='fo-30 bold'>{{item.name}}</view>
             <view class='fo-26 ma-t10'>支数：{{item.count}}</view>
+            <view class='fo-26 ma-t10'>总重：{{item.weight}}</view>
           </view>
         </view>
       </view>

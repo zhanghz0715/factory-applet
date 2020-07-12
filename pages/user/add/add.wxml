@@ -15,7 +15,7 @@
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
           <view class='fo-30'>
-            <text class='red'>*</text>name</view>
+            <text class='red'>*</text>姓名</view>
           <input class='fo-30 text-right' confirm-hold value="{{name}}" name="name" placeholder='输入姓名'></input>
         </view>
         <view class='pa-t30 panel-between item-center border-b pa-b20'>
