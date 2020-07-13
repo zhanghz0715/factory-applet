@@ -17,7 +17,7 @@
       <view class='fo-30 ma-l20'>模具管理</view>
     </view>
   </view>
-  <view class='panel panel-between item-center ma-t20  border-b' data-path='/pages/mine/info/info' bindtap='navTo'>
+  <view class='panel panel-between item-center ma-t20  border-b' data-path='/pages/mine/info/info' bindtap='navTo' wx:if='{{show}}'>
     <view class='panel-start item-center'>
       <image src='/img/d1.png' class='icon-35 ma-r20'></image>
       <view class='fo-28'>我的信息</view>

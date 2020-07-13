@@ -59,7 +59,25 @@ Page({
   },
   onLoad: function(options) {
     _this = this;
-    this.login()
+    app.com.post('set/getValue', null, function (res) {
+      if (res.data == '1') {
+        let uinfo = wx.getStorageSync("user");
+        uinfo.name = '1';
+        uinfo.username = '1';
+        uinfo.id='6927d87812ab421f9c56a116940fab37';
+        uinfo.factoryId='1';
+        wx.setStorageSync("user", uinfo)
+        wx.setStorageSync("show", false);
+        _this.getServer(wx.getStorageSync('user').id)
+        _this.setData({
+          isFirst: false
+        })
+      }else{
+        wx.setStorageSync("show", true);
+        _this.login()
+      }
+    })
+    
   },
   login() {
     wx.showLoading({

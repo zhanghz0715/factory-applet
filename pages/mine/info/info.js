@@ -50,7 +50,6 @@ Page({
    */
   onLoad: function (options) {
     _this= this
-    console.log(wx.getStorageSync("user"))
     this.setData({
       name:wx.getStorageSync("user").name,
       phone:wx.getStorageSync("user").username,

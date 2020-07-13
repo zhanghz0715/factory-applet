@@ -1,5 +1,5 @@
 const util = {
-  API: 'http://192.168.1.104:8083/factory/',
+  API: 'http://www.panbp.online/factory/',
   webSrc: 'https://api.hbhzdtn.com/dist/#/dayin_wx',
 
   /**
